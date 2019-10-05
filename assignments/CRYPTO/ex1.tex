@@ -1,0 +1,147 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{color}
+
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+
+\author{Amar Lakshya}
+\title{Cryptography module, Exercises 1 (unassessed) - Answers}
+\begin{document}
+
+\part*{Cryptography module, Exercises 1 (unassessed) - Answers}
+\section*{Answer - 1:}
+
+\textbf{Listing 1} contains python code to brute-force the given cipher-text "\textit{AVUEVLETSEISBNACBOOLEOBTILBDLCOBOOE}".
+
+\lstset{caption={ex1.1.py}}
+\begin{lstlisting}
+from math import ceil
+
+def encode(msg, key):
+    cipher = ""
+    for rails in range(0, key):
+        for char in range(rails, len(msg), key):
+            cipher += msg[char]
+    return cipher
+
+def decode(cipher, key):
+    msg = ""
+    count = ceil(len(cipher)/key)
+    for rails in range(0, count):
+        for c in range(rails, len(cipher), count):
+            msg += cipher[c]
+    return msg
+
+def crack_cipher(cipher):
+    for key in range(1, len(cipher)):
+        print(decode(cipher, key))
+
+cipher = "AVUEVLETSEISBNACBOOLEOBTILBDLCOBOOE"
+
+crack_cipher(cipher)
+\end{lstlisting}
+\textbf{Listing 2} contains the output of the python code in \textbf{Listing 1} containing the message, "\textit{ALICELOVESBOBBUTBOBDOESNOTLOVEALICE}" shown in the bold.
+
+
+\lstset{caption={output of ex1.1.py}}
+\lstset{keywordstyle=\bfseries}
+\lstset{morekeywords={ALICELOVESBOBBUTBOBDOESNOTLOVEALICE}}
+\begin{lstlisting}
+AVUEVLETSEISBNACBOOLEOBTILBDLCOBOOE
+AOVLUEEOVBLTEITLSBEDILSCBONBAOCOBEO
+ABIVNLUABECDVBLLOCEOOTLBSEOEOOIBEST
+AEODVILLUSECEBOOVNBBLATOECIOTBLESOB
+ATAOLVSCBCUEBTOEIOIBVSOLOLBLBOENEDE
+AEBOIOVTNLLBUSAEBOEECODOVIBBLELSOTC
+ALICELOVESBOBBUTBOBDOESNOTLOVEALICE
+ALICELOVESBOBBUTBOBDOESNOTLOVEALICE
+AVSBBEILOVLENOOLCOUEIAOBBOEETSCLTDB
+AVSBBEILOVLENOOLCOUEIAOBBOEETSCLTDB
+AVSBBEILOVLENOOLCOUEIAOBBOEETSCLTDB
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AEEEBCOOIDOOVVTINBLBLLBEULSSAOETBCO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+AUVESIBABOEBIBLOOEVELTESNCOLOTLDCBO
+\end{lstlisting}
+
+\section*{Answer - 2:}
+
+\textbf{Listing 3} contains the python code to perform encryption and decryption using the block cipher scheme mentioned in the question. 
+
+\lstset{caption={ex1.2.py}}
+\begin{lstlisting}
+ROUNDS = 2
+
+
+def key_function(K, i):
+    return K + 75 * (i % 256)
+
+
+def F(Ki, Pi):
+    return 127 * Ki + (Pi % 256)
+
+
+def encrypt(msg, key):
+    Li = msg[0]
+    Ri = msg[1]
+    temp = 0
+    for i in range(0, ROUNDS):
+        Ki = key_function(key, i)
+        temp = Li ^ F(Ki, Ri)
+        Li = Ri
+        Ri = temp
+    return [Ri, Li]
+
+
+def decrypt(cipher, key):
+    Li = cipher[1]
+    Ri = cipher[0]
+    temp = 0
+    for i in range(ROUNDS, 0, -1):
+        Ki = key_function(key, (i - 1))
+        temp = Ri ^ F(Ki, Li)
+        Ri = Li
+        Li = temp
+    return [Li, Ri]
+
+
+print(encrypt([86, 83], 89))
+\end{lstlisting}
+\textbf{Listing 4} contains the output of the python code in \textbf{Listing 3} containing the encrypted cipher-text.
+
+\lstset{caption={output of ex1.2.py}}
+\begin{lstlisting}
+[20955, 11308]
+\end{lstlisting}
+
+\end{document}
