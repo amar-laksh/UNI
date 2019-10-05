@@ -8,7 +8,7 @@
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{color}
-
+\usepackage{hyperref}
 
 \lstset{language=Python}
 \lstset{frame=lines}
@@ -20,6 +20,9 @@
 \begin{document}
 
 \part*{Cryptography module, Exercises 1 (unassessed) - Answers}
+
+\textbf{All the code contained in this exercise solution is hosted at:\linebreak
+\href{https://github.com/amar-laksh/UNI/tree/master/assignments/CRYPTO/code}{https://github.com/amar-laksh/UNI/tree/master/assignments/CRYPTO/cod}}
 \section*{Answer - 1:}
 
 \textbf{Listing 1} contains python code to brute-force the given cipher-text "\textit{AVUEVLETSEISBNACBOOLEOBTILBDLCOBOOE}".
@@ -137,7 +140,7 @@ def decrypt(cipher, key):
 
 print(encrypt([86, 83], 89))
 \end{lstlisting}
-\textbf{Listing 4} contains the output of the python code in \textbf{Listing 3} containing the encrypted cipher-text.
+\textbf{Listing 4} contains the output of the python code in \textbf{Listing 3} containing the encrypted cipher-text "\textit{[20955, 11308]}".
 
 \lstset{caption={output of ex1.2.py}}
 \begin{lstlisting}
