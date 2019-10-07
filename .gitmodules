@@ -1,0 +1,3 @@
+[submodule "assignments/CRYPTO/code/des"]
+	path = assignments/CRYPTO/code/des
+	url = https://github.com/amar-laksh/des
