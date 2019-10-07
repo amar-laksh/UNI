@@ -22,7 +22,8 @@
 \part*{Cryptography module, Exercises 1 (unassessed) - Answers}
 
 \textbf{All the code contained in this exercise solution is hosted at:\linebreak
-\href{https://github.com/amar-laksh/UNI/tree/master/assignments/CRYPTO/code}{https://github.com/amar-laksh/UNI/tree/master/assignments/CRYPTO/cod}}
+\href{https://github.com/amar-laksh/UNI/tree/master/assignments/CRYPTO/code}
+{https://github.com/amar-laksh/UNI/assignments/CRYPTO/code}}
 \section*{Answer - 1:}
 
 \textbf{Listing 1} contains python code to brute-force the given cipher-text "\textit{AVUEVLETSEISBNACBOOLEOBTILBDLCOBOOE}".
@@ -146,5 +147,29 @@ print(encrypt([86, 83], 89))
 \begin{lstlisting}
 [20955, 11308]
 \end{lstlisting}
+
+\section*{Answer - 3:}
+
+\textbf{Listing 5} contains the python code to perform encryption using a modified version of the DES implementation in Python.
+
+The modified fork of the DES python library can be found at:\linebreak
+\href{https://github.com/amar-laksh/des}{https://github.com/amar-laksh/des}
+
+\lstset{caption={ex1.3.py}}
+\begin{lstlisting}
+import sys
+sys.path.insert(1, 'des')
+from des import DesKey
+key = DesKey(b"00000000", rounds=1)
+print(key.encrypt(b"00000000").hex())
+\end{lstlisting}
+\textbf{Listing 6} contains the output of the python code in \textbf{Listing 5} containing the encrypted cipher-text "\textit{3574206561312435}". 
+
+\lstset{caption={output of ex1.3.py}}
+\begin{lstlisting}
+3574206561312435
+\end{lstlisting}
+This cipher-text is obtained even when the encryption key and plain-text is all zeroes.
+
 
 \end{document}
