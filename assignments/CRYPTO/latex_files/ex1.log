@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.3)  8 OCT 2019 00:05
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.3)  9 OCT 2019 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -332,6 +332,12 @@ LaTeX Warning: Label `lst:code_direct' multiply defined.
 
 LaTeX Warning: Label `lst:code_direct' multiply defined.
 
+
+LaTeX Warning: Label `lst:code_direct' multiply defined.
+
+
+LaTeX Warning: Label `lst:code_direct' multiply defined.
+
 )
 \openout1 = `ex1.aux'.
 
@@ -433,27 +439,38 @@ Underfull \hbox (badness 3158) in paragraph at lines 155--157
 []\TU/lmr/m/n/10 The modified fork of the DES python library can be found at:
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 183--184
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 3158) in paragraph at lines 191--193
+[]\TU/lmr/m/n/10 The modified fork of the DES python library can be found at:
+ []
+
+[3] [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
  (./ex1.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 299.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 299.
 Package rerunfilecheck Info: File `ex1.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 299.
  ) 
 Here is how much of TeX's memory you used:
- 10399 strings out of 492922
- 144173 string characters out of 6138852
- 445011 words of memory out of 5000000
- 14352 multiletter control sequences out of 15000+600000
- 16314 words of font info for 40 fonts, out of 8000000 for 9000
+ 10453 strings out of 492922
+ 145420 string characters out of 6138852
+ 448011 words of memory out of 5000000
+ 14404 multiletter control sequences out of 15000+600000
+ 16322 words of font info for 41 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  31i,6n,40p,220b,1735s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ex1.pdf (3 pages).
+Output written on ex1.pdf (5 pages).
