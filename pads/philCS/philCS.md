@@ -4,3 +4,11 @@
 * Epistemology in CS is good but ? (git and changesets. Does git provide a solution to the problem?)
 * The different types of philosophies for git (Ship of Thesus)
 * The different approaches to execute root actions while being user (setuid)
+
+
+
+Links
+-----
+
+* https://plato.stanford.edu/entries/computer-science/
+* https://en.wikipedia.org/wiki/Philosophy_of_computer_science
