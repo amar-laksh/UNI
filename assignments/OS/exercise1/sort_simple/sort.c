@@ -1,46 +1,75 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 const int LINES = 20;
 const int ROWS = 20;
 
+typedef char* String;
+
 typedef struct {
-    char array[20][20];
+    String words[20];
 } Text;
 
 void print_input(Text input)
 {
-    printf("output:\n");
     for (int i = 0; i < 20; i++) {
-	for (int j = 0; j < 20; j++) {
-	    if (input.array[i][j] != '\0') {
-		printf("%c", input.array[i][j]);
+	if (*input.words[i] != '\0') {
+	    printf("%s\n", (input.words)[i]);
+	}
+    }
+}
+Text sort_input(Text input)
+{
+    String f_string, s_string;
+    for (int i = 0; i < 19; i++) {
+	for (int j = i + 1; j < 20; j++) {
+	    f_string = input.words[i];
+	    s_string = input.words[j];
+	    if (*f_string != '\0' && *s_string != '\0') {
+		if (strcmp(f_string, s_string) > 0) {
+		    input.words[i] = s_string;
+		    input.words[j] = f_string;
+		}
 	    }
 	}
     }
+    return input;
 }
 
-Text get_input(Text input)
+void get_input(Text input)
 {
-    /** char input[20][20] = { '\0' }; */
     int index = 0, line = 0;
     char c;
-    while (line < 20) {
-	while ((c = getchar()) != '\n' && index <= 20) {
-	    input.array[line][index] = c;
+    while ((c = getchar()) != (char)0xffffffff) {
+	if (c != '\n') {
+	    *(*(input.words + line) + index) = c;
+	    /** printf("%c, %c, %d,  %d\n", c, *(*(input.words + line) + index), index, line); */
 	    index = index + 1;
-	}
-	if (c == '\n') {
-	    input.array[line][index] = '\n';
+	} else {
+	    *(*(input.words + line) + index) = '\0';
 	    index = 0;
+	    line++;
 	}
-	line++;
     }
-
-    return input;
 }
 int main(int argc, char** argv)
 {
-    Text input = { '\0' };
-    print_input(get_input(input));
+    Text input;
+
+    // Allocating memory for strings
+    for (int i = 0; i < 20; ++i) {
+	*(input.words + i) = (String)malloc(sizeof(char) * 20);
+    }
+
+    get_input(input);
+
+    Text sorted_input = sort_input(input);
+    print_input(sorted_input);
+
+    // Freeing memory of strings
+    for (int i = 0; i < 20; ++i) {
+	free(*(input.words + i));
+    }
     return 0;
 }
