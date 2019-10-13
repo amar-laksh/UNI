@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-const int LINES = 20;
-const int ROWS = 20;
-
 typedef char* String;
 
 typedef struct {
@@ -41,7 +38,7 @@ void get_input(Text input)
 {
     int index = 0, line = 0;
     char c;
-    while ((c = getchar()) != (char)0xffffffff) {
+    while ((c = getchar()) != EOF) {
 	if (c != '\n') {
 	    *(*(input.words + line) + index) = c;
 	    /** printf("%c, %c, %d,  %d\n", c, *(*(input.words + line) + index), index, line); */
