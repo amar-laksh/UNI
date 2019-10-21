@@ -9,11 +9,11 @@ ROUNDS = 2
 
 
 def key_function(K, i):
-    return K + 75 * (i % 256)
+    return (K + 75 * i) % 256
 
 
 def F(Ki, Pi):
-    return 127 * Ki + (Pi % 256)
+    return (127 * (Ki + Pi)) % 256
 
 
 def encrypt(msg, key):

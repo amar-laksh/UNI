@@ -1,1 +1,4 @@
 *.ctb~*
+*.o
+vgcore*
+*.zip

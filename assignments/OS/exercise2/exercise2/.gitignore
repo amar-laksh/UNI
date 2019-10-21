@@ -1,0 +1,5 @@
+*.o
+client
+serverSingle
+serverThreaded
+
