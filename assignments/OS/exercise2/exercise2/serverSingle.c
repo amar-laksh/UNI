@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	n = read(newsockfd, temp, BUFFERLENGTH);
 	if (n < 0)
 	    error("ERROR reading from socket");
-
+	printf("\nrecieved message:\n%s", temp);
 	/** read the message */
 	int length = atoi(temp);
 	buffer = (char*)malloc(length * sizeof(char));
@@ -38,12 +38,12 @@ int main(int argc, char* argv[])
 	n = read(newsockfd, buffer, length);
 	if (n < 0)
 	    error("ERROR reading from socket");
-
-	printf("Here is the message:\n%s\n", buffer);
+	printf("\nrecieved message:\n%s", buffer);
 	/** write or append to logfile based on context */
 	write_or_append(&filefd, buffer, 1);
-	close(newsockfd);
     }
+
+    close(newsockfd);
     free(buffer);
     return 0;
 }

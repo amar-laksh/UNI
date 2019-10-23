@@ -44,19 +44,19 @@ int main(int argc, char* argv[])
 	exit(EXIT_FAILURE);
     }
     freeaddrinfo(result); /* No longer needed */
-    bzero(buffer, bufsize);
     /** Getting message from input */
-    while ((chars = getdelim(&buffer, &bufsize, 0xfffff, stdin)) >= 0) {
-	printf("\nBUFFER:\n%s", buffer);
-	printf("\nSIZE: %d\n", chars);
-
+    while ((chars = getdelim(&buffer, &bufsize, '\n', stdin)) >= 0) {
 	/** send message length */
 	char length[BUFFERLENGTH];
 	itoa(chars, length, 10);
+	printf("\nsending message: %s\n", length);
 	n = write(sockfd, length, BUFFERLENGTH);
-
+	if (n < 0)
+	    error("ERROR writing to socket");
 	/* send message */
-	n = write(sockfd, buffer, bufsize);
+
+	printf("\nsending message: %s\n", buffer);
+	n = write(sockfd, buffer, chars);
 	if (n < 0)
 	    error("ERROR writing to socket");
     }
