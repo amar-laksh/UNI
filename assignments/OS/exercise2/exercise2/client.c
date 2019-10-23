@@ -2,15 +2,19 @@
 
 int main(int argc, char* argv[])
 {
+    size_t bufsize = 256;
     struct addrinfo hints;
     struct addrinfo *result, *rp;
     int sockfd, s;
-    char buffer[BUFFERLENGTH];
-    int n;
+    char* buffer;
+    int n, chars;
     if (argc != 3) {
 	fprintf(stderr, "usage %s hostname port\n", argv[0]);
 	exit(1);
     }
+    buffer = (char*)malloc(bufsize * sizeof(char));
+    if (buffer == NULL)
+	error("ERROR allocating memory");
     memset(&hints, 0, sizeof(struct addrinfo));
     hints.ai_family = AF_UNSPEC;     /* Allow IPv4 or IPv6 */
     hints.ai_socktype = SOCK_STREAM; /* TCP socket */
@@ -40,19 +44,22 @@ int main(int argc, char* argv[])
 	exit(EXIT_FAILURE);
     }
     freeaddrinfo(result); /* No longer needed */
-    /* prepare message */
-    printf("Please enter the message: ");
-    bzero(buffer, BUFFERLENGTH);
-    fgets(buffer, BUFFERLENGTH, stdin);
-    /* send message */
-    n = write(sockfd, buffer, strlen(buffer));
-    if (n < 0)
-	error("ERROR writing to socket");
-    bzero(buffer, BUFFERLENGTH);
-    /* wait for reply */
-    n = read(sockfd, buffer, BUFFERLENGTH - 1);
-    if (n < 0)
-	error("ERROR reading from socket");
-    printf("%s\n", buffer);
+    bzero(buffer, bufsize);
+    /** Getting message from input */
+    while ((chars = getdelim(&buffer, &bufsize, 0xfffff, stdin)) >= 0) {
+	printf("\nBUFFER:\n%s", buffer);
+	printf("\nSIZE: %d\n", chars);
+
+	/** send message length */
+	char length[BUFFERLENGTH];
+	itoa(chars, length, 10);
+	n = write(sockfd, length, BUFFERLENGTH);
+
+	/* send message */
+	n = write(sockfd, buffer, bufsize);
+	if (n < 0)
+	    error("ERROR writing to socket");
+    }
+    free(buffer);
     return 0;
 }

@@ -11,8 +11,66 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
-#define BUFFERLENGTH 256
+#define BUFFERLENGTH 20
 
+void swap(char* x, char* y)
+{
+    char t = *x;
+    *x = *y;
+    *y = t;
+}
+
+// function to reverse buffer[i..j]
+char* reverse(char* buffer, int i, int j)
+{
+    while (i < j)
+	swap(&buffer[i++], &buffer[j--]);
+    return buffer;
+}
+
+// Iterative function to implement itoa() function in C
+char* itoa(int value, char* buffer, int base)
+{
+    // invalid input
+    if (base < 2 || base > 32)
+	return buffer;
+    // consider absolute value of number
+    int n = abs(value);
+    int i = 0;
+    while (n) {
+	int r = n % base;
+
+	if (r >= 10)
+	    buffer[i++] = 65 + (r - 10);
+	else
+	    buffer[i++] = 48 + r;
+	n = n / base;
+    }
+    // if number is 0
+    if (i == 0)
+	buffer[i++] = '0';
+    // If base is 10 and value is negative, the resulting string
+    // is preceded with a minus sign (-)
+    // With any other base, value is always considered unsigned
+    if (value < 0 && base == 10)
+	buffer[i++] = '-';
+    buffer[i] = '\0'; // null terminate string
+    // reverse the string and return it
+    return reverse(buffer, 0, i - 1);
+}
+
+/* long atoi(const char* S, int n) */
+// {
+// // base case - we have reached end of the string or
+// // current character is non-numeric
+// if (n < 0 || (S[n] < '0' || S[n] > '9'))
+// return 0;
+//
+// // recur for remaining digits and append current digit
+// // to result of recusion multiply by 10
+// return (10 * atoi(S, n - 1) + (S[n] - '0'));
+// }
+/*  */
 void error(char* msg)
 {
     perror(msg);
@@ -52,6 +110,14 @@ void accept_con(int* sockfd, struct sockaddr_in6* addr, socklen_t* len, int* new
 	len);
     if (*newsockfd < 0)
 	error("ERROR on accept");
+}
+
+void create_file(char* filename, int* filefd)
+{
+}
+
+void write_or_append(int* filefd, char* buffer, int flag)
+{
 }
 
 #endif /* ifndef HELPER_H */
