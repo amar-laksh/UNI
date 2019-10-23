@@ -8,6 +8,7 @@ int main(int argc, char* argv[])
     int sockfd, s;
     char* buffer;
     int n, chars;
+    char length[BUFFERLENGTH];
     if (argc != 3) {
 	fprintf(stderr, "usage %s hostname port\n", argv[0]);
 	exit(1);
@@ -45,9 +46,8 @@ int main(int argc, char* argv[])
     }
     freeaddrinfo(result); /* No longer needed */
     /** Getting message from input */
-    while ((chars = getdelim(&buffer, &bufsize, '\n', stdin)) >= 0) {
+    while ((chars = getdelim(&buffer, &bufsize, '\n', stdin)) > 0) {
 	/** send message length */
-	char length[BUFFERLENGTH];
 	itoa(chars, length, 10);
 	printf("\nsending message: %s\n", length);
 	n = write(sockfd, length, BUFFERLENGTH);
@@ -60,6 +60,10 @@ int main(int argc, char* argv[])
 	if (n < 0)
 	    error("ERROR writing to socket");
     }
+    n = write(sockfd, "\0", 1);
+    if (n < 0)
+	error("ERROR writing to socket");
+    close(sockfd);
     free(buffer);
     return 0;
 }

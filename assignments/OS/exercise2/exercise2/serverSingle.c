@@ -21,15 +21,19 @@ int main(int argc, char* argv[])
     listen(sockfd, 5);
 
     clilen = sizeof(cli_addr);
+    accept_con(&sockfd, &cli_addr, &clilen, &newsockfd);
     while (1) {
 	/* waiting for connections */
-	accept_con(&sockfd, &cli_addr, &clilen, &newsockfd);
 	/* read the message length */
 	char temp[BUFFERLENGTH];
 	n = read(newsockfd, temp, BUFFERLENGTH);
 	if (n < 0)
 	    error("ERROR reading from socket");
-	printf("\nrecieved message:\n%s", temp);
+
+	if (strcmp(temp, "\0") == 0) {
+	    printf("ENDING\n");
+	    break;
+	}
 	/** read the message */
 	int length = atoi(temp);
 	buffer = (char*)malloc(length * sizeof(char));
@@ -40,10 +44,9 @@ int main(int argc, char* argv[])
 	    error("ERROR reading from socket");
 	printf("\nrecieved message:\n%s", buffer);
 	/** write or append to logfile based on context */
-	write_or_append(&filefd, buffer, 1);
+	/** write_or_append(&filefd, buffer, 1); */
+	free(buffer);
     }
-
     close(newsockfd);
-    free(buffer);
     return 0;
 }
