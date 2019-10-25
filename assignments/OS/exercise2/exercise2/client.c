@@ -49,6 +49,7 @@ int main(int argc, char* argv[])
     while ((chars = getdelim(&buffer, &bufsize, '\n', stdin)) > 0) {
 	/** send message length */
 	itoa(chars, length, 10);
+
 	debug_print("\nsending message: %s\n", length);
 	n = write(sockfd, length, BUFFERLENGTH);
 	if (n < 0)

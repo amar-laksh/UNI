@@ -1,3 +1,6 @@
 [submodule "assignments/CRYPTO/code/pydes"]
 	path = assignments/CRYPTO/code/pydes
 	url = https://github.com/amar-laksh/pydes
+[submodule "assignments/CRYPTO/code/ex1/pydes"]
+	path = assignments/CRYPTO/code/ex1/pydes
+	url = https://github.com/amar-laksh/pydes

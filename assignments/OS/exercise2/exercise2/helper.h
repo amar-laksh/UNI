@@ -67,18 +67,6 @@ char* itoa(int value, char* buffer, int base)
     return reverse(buffer, 0, i - 1);
 }
 
-/* long atoi(const char* S, int n) */
-// {
-// // base case - we have reached end of the string or
-// // current character is non-numeric
-// if (n < 0 || (S[n] < '0' || S[n] > '9'))
-// return 0;
-//
-// // recur for remaining digits and append current digit
-// // to result of recusion multiply by 10
-// return (10 * atoi(S, n - 1) + (S[n] - '0'));
-// }
-/*  */
 void error(char* msg)
 {
     perror(msg);
@@ -118,17 +106,6 @@ void accept_con(int* sockfd, struct sockaddr_in6* addr, socklen_t* len, int* new
 	len);
     if (*newsockfd < 0)
 	error("ERROR on accept");
-}
-
-void create_file(const char* filename, FILE* filefd)
-{
-    filefd = fopen(filename, "a+");
-    if (filefd == NULL)
-	error("Failed to open file\n");
-}
-
-void write_or_append(FILE* filefd, char* buffer, int flag)
-{
 }
 
 #endif /* ifndef HELPER_H */
