@@ -1,0 +1,303 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+
+\author{Amar Lakshya}
+\title{Secure Programming module, Formative Assignment - Answers}
+\begin{document}
+
+\part*{Secure Programming module, Formative Assignment - Answers}
+
+\section*{Answer - 1:}
+
+
+The fundamental problem in the code is the mixing of Code and Data through trusted user input. The said mixing allows any attacker to exploit this code to make the interpreter see the data part as part of the code itself.
+\par
+An example of such an exploit could be a specially crafted query in the form of \textbf{Listing 1} and the subsequent interpreted code as shown in \textbf{Listing 2}.
+
+
+\lstset{caption={SQL Injection Example}}
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           commentstyle=\color{grey}
+        ]
+' or author='admin'; -- 
+\end{lstlisting}
+
+
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{gray}
+        ]
+$author = $_GET['author'];
+$query = "SELECT (*) FROM books WHERE author = '' or author='admin'; -- '";
+$result = mysqli_query($query);
+\end{lstlisting}
+
+
+The two counter-measures to this kind of injection are:
+\begin{enumerate}
+\item \textbf{Prepared Statements}
+
+
+Prepared Statements provides a way to separate a SQL Query (Code) and the input (Data) by first preparing SQL queries and then binding it with the given input as shown in \textbf{Listing 3}.
+\lstset{caption={Using Prepared Statements to secure the code}}
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+$author = $_GET['author'];
+// create a prepared statement
+$stmt = $conn->prepare("SELECT (*) FROM books WHERE author =:name");
+
+// bind parameters
+$stmt->bindParam(":name", $author)
+
+// execute query
+$stmt->execute();
+\end{lstlisting}
+
+\item \textbf{Stored Procedures}
+
+Stored Procedures work by storing the SQL Query (Code) in the form of specialized data structure called a \textbf{procedure}. (Note: This in itself, could be a cause of concern since it inherently trusts the procedure data structure to be well-formed  and from a security standpoint, it might not be the best technique)
+
+\textbf{Listing 4} demonstrates a stored Procedure for the given query and \textbf{Listing 5} shows the subsequent PHP code.
+
+\lstset{caption={Stored Procedure in SQL}}
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           commentstyle=\color{black}
+        ]
+CREATE PROCEDURE searchByAuthor @author nvarchar(20)
+AS
+select * FROM books WHERE author = @author
+GO;
+\end{lstlisting}
+
+\lstset{caption={Using Stored Procedure to secure the code}}
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+$author = $_GET['author'];
+// create a prepared statement
+$stmt = $conn->prepare("CALL searchByAuthor(:author)");
+
+// bind parameters
+$stmt->bindParam(":name", $author, PDO::PARAM_STR);
+
+// execute query
+$stmt->execute();
+\end{lstlisting}
+
+
+
+\end{enumerate}
+
+\section*{Answer - 2:}
+
+An HTTPOnly Cookie as shown in \textbf{Listing 6} is a special form of cookie that can be included (if the browser supports it) in requests to disallow access to the cookie through any kind of client-side script (such as JavaScript).
+\par
+This helps in preventing XSS attacks as they rely on client-side scripts to steal cookies which can be restricted adding the \textit{HTTPOnly} flag to the cookie.
+\par
+\textbf{Note:} The use of HTTP-only cookies is one of several techniques that, when used together, can mitigate the risk of cross-site scripting. Used alone, it cannot completely eliminate the danger of cross-site scripting.
+\lstset{caption={HTTPOnly Cookie}}
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+Set-Cookie: USER=123; expires=Wednesday, 09-Nov-99 23:12:40 GMT; HttpOnly
+\end{lstlisting}
+
+\section*{Answer - 3:}
+
+\begin{enumerate}
+\item The different kinds of UID comes from a fundamental need to control and monitor access control privileges in an Operating System.
+\par
+The UNIX Solution consists of these Unique IDs that can be assigned to a process namely effective UID or euid, real UID or uid and saved UID.
+
+\begin{itemize}
+\item \textbf{Real UID:}
+
+This type of UID determines who owns the process. A process can set its real UID using the \textbf{\textit{setuid()}} function call and it can get its real UID by using the \textbf{\textit{getuid()}} function call.
+
+\item \textbf{Effective UID:}
+
+This type of UID tells the kernel about the kind of permissions the process has while it accesses shared resources such as shared memory and semaphores. Effective UID can get procured by a process through the \textbf{\textit{geteuid()}} function call and set by the \textbf{\textit{seteuid()}} function call.
+
+\item \textbf{Saved UID:}
+
+Saved UID acts as a saving space for the effective UID set when a program is executed and stores those effective UIDs for later use. It can be set by using \textbf{\textit{setresuid()}} and its value can be acquired by calling the function \textbf{\textit{getresuid()}}.
+\end{itemize}
+
+\item When compiled by \textbf{root} and executed by \textbf{root} the given program outputs as shown in \textbf{Listing 7}.
+
+\lstset{caption={output of C program}}
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+Opening  attempt 1 succeeded !
+Opening  attempt 2 failed !
+Opening  attempt 3 succeeded !
+Opening  attempt 4 failed !
+setuid  failed !
+\end{lstlisting}
+
+Going through the program we can see that the following happens:
+\begin{enumerate}
+\item Since the \textbf{\textit{testFile()}} function is called with the effective and real UID of \textbf{\textit{root}} (which is 0) in the beginning and because it's the root which executed and owns the process, we get the first message indicating that we were able to open the file. (Since \textbf{\textit{root}} is allowed to read from \textit{/etc/shadow})
+
+\item Next, the \textbf{\textit{seteuid(500)}} function is called with a UID of \textit{500} and since all UID's above 0 are non-root UIDs, the program is running with non-root privileges now or has effectively dropped its privileges. The problem comes when we try to read the \textit{/etc/shadow} file since reading it requires the program process to have a privileged UID and thus we get the failing message. However it's worth noting that the real UID of the program is still 0 and thus the program has enough privileges to escalate its effective UID to a privileged one namely \textbf{\textit{root}}.
+
+\item Now, through the use of \textbf{\textit{seteuid(0)}}, the program escalates it's effective privileges by setting its effective UID to 0 which gives it the \textbf{\textit{root}} privileges again. Hence, we get the third message of successfully opening the \textit{/etc/shadow} file.
+
+\item Here with the function call, \textbf{\textit{setuid(500)}} the real UID of the program process is now changed to 500 which is a non-privileged ID. The difference here is since the real ID has be changed, the real owner of the program process has changed. Thus it has dropped it's real privileges and cannot escalate privileges to \textbf{\textit{root}} since it doesn't have permissions to do that anymore. Therefore, we see the fourth attempt failed message.
+
+\item Since we had changed the real UID of the process in the earlier function call it is no longer possible to escalate privileges through \textbf{\textit{setuid(0)}} since in order to escalate the real UID we already need to have the sufficient privileges. Therefore, we get the setuid failed message.
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Answer - 4:}
+
+The fundamental problem in computer security is the nature of its complexity and its fragility in the face of relying on any single control measure that seemingly provides complete security. The \textit{defence-in-depth} approach is a solution to this problem. 
+
+\textit{Defence-in-depth} is a philosophy of looking at problems in Computer Security in a layered manner thereby assessing and securing every possible layer in a problem through various well-implemented and conservative procedures.
+\par
+This type of approach allows for acceptable level of security even in the case of multiple failures across different layers.
+\par
+An example of this approach can be found in counter-measures when dealing with injections in general, the three layers of defence are:
+\begin{enumerate}
+\item \textbf{Filtering}:
+
+The first line of defence includes filtering the Code part from the user input (Data) For e.g. removing the use of <script> tag in user input. The problem with filtering is that it requires a lot of coverage of all possible user input characters that could be deemed dangerous (Blacklisting). An example of filtering is shown in \textbf{Listing 8}.
+
+\lstset{caption={Example of filtering an email input in PHP}}
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+<?php
+$email = "john.doe@example.com";
+
+// Remove all illegal characters from email
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+// Validate e-mail
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    echo("$email is a valid email address");
+} else {
+    echo("$email is not a valid email address");
+}
+?> 
+\end{lstlisting}
+
+\item \textbf{Encoding:}
+
+Encoding tries to replace HTML markups and other special characters with alternative  safe representations such as URL-encoding the \textit{<script>} tag to \textit{\&lt;script\&gt;}. An example of Encoding is shown in \textbf{Listing 9} and the output is shown in \textbf{Listing 10}. Encoding also suffers from the problem of writing a safe and correct encoder to handle all possible characters.
+
+\lstset{caption={Example of encoding an URL in PHP}}
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\scriptsize,
+           commentstyle=\color{black}
+        ]
+
+<?php
+echo '<a href="http://example.com/department_list_script/',
+    rawurlencode('sales and marketing/Miami'), '">';
+?>
+\end{lstlisting}
+
+\lstset{caption={Output of Encoding in Listing 9}}
+\lstset{keywordstyle=\bfseries}
+\begin{lstlisting}[
+           language=PHP,
+           showspaces=false,
+           basicstyle=\ttfamily\tiny,
+           commentstyle=\color{black}
+        ]
+
+<a href="http://example.com/department_list_script/sales%20and%20marketing%2FMiami">
+\end{lstlisting}
+
+\item \textbf{Stored Procedures/Prepared Statements:}
+
+As discussed above, Stored Procedures and Prepared Statements help in keeping the Data and Code channels separate and hence they can be used as the last layer of defence in dealing with injections even if Filtering and Encoding doesn't work.
+\end{enumerate}
+
+\section*{Answer - 5:}
+
+\begin{itemize}
+\item The following is a non-exhaustive list of affected services (on the assumption that the victim could be a student, Teacher or TA):
+
+\begin{itemize}
+\item Profile information about Students, Teachers and TAs can be harvested or tampered with.
+\item Unauthorized access to the Files section of Students, Teachers and TAs containing sensitive and/or personal data.
+\item Approved Integrations could be altered so as to create a persistent backdoor to the Canvas API through code.
+\item Assignments could be tampered with.
+\item Student Submissions could be seen, modified and tampered with by the attackers
+\item Unauthorized feedback on the submissions could occur.
+\item ePortfolio information can be changed. Also unauthorized collection of ePortfolios can occur.
+\item Unauthorized access to the in-built mail system can wreak havoc on users especially when the victim is a Teacher or TA.
+\item Quizzes can be tampered with especially in the case of Attendance Quizzes where incentives for an attack seems high.
+\end{itemize}
+
+
+\item The most harm to a Student, Teacher or TA can be done in the form of the following:
+\begin{itemize}
+\item The Single Sign-on system getting compromised and letting the attackers sign-in to all the other University of Birmingham web services.
+\item Submissions section for the modules is tampered with.
+\item The mail system is coerced by the attackers.
+\item Files are tampered or deleted.
+\item Attendance Quizzes are tampered with.
+\end{itemize}
+
+
+\item The most harm from the perspective of the University would be:
+\begin{itemize}
+\item The leaking of feedback assessment of the University collected from staff and students.
+\item The leaking of sensitive mails shared between Teachers and TAs.
+\item The leaking of Module details and schedule.
+\item Professor and Students Personal details being leaked.
+\item Leaking of announcements containing sensitive information with respective to staffs' personal schedule or internal college events.
+\item The video recordings getting leaked.
+\end{itemize}
+
+\end{itemize}
+\end{document}

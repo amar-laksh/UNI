@@ -13,6 +13,14 @@
 #include <unistd.h>
 #define BUFFERLENGTH 20
 
+//debug prints: set DEBUG to 0 to remove the debug prints from the output
+#define DEBUG 1
+#define debug_print(...)                  \
+    do {                                  \
+	if (DEBUG)                        \
+	    fprintf(stderr, __VA_ARGS__); \
+    } while (0)
+
 void swap(char* x, char* y)
 {
     char t = *x;
@@ -112,11 +120,14 @@ void accept_con(int* sockfd, struct sockaddr_in6* addr, socklen_t* len, int* new
 	error("ERROR on accept");
 }
 
-void create_file(char* filename, int* filefd)
+void create_file(const char* filename, FILE* filefd)
 {
+    filefd = fopen(filename, "a+");
+    if (filefd == NULL)
+	error("Failed to open file\n");
 }
 
-void write_or_append(int* filefd, char* buffer, int flag)
+void write_or_append(FILE* filefd, char* buffer, int flag)
 {
 }
 
