@@ -3,19 +3,19 @@
 void write_or_append(const char* filename, char* message)
 {
     FILE* fp = NULL;
-    /** char c = 0; */
-    /** int lines = 0; */
-    fp = fopen(filename, "a");
-    /**     if (fp == (FILE*)NULL) */
-    /** error("Failed to open file\n"); */
-    /** while (!feof(fp)) { */
-    /** c = fgetc(fp); */
-    /** if (c == '\n') { */
-    /** lines++; */
-    /** } */
-    /** } */
+    char c = 0;
+    int lines = 0;
+    fp = fopen(filename, "a+");
+    if (fp == (FILE*)NULL)
+	error("Failed to open file\n");
+    while (!feof(fp)) {
+	c = fgetc(fp);
+	if (c == '\n') {
+	    lines++;
+	}
+    }
     /** Writing the message to file */
-    fprintf(fp, "%s", message);
+    fprintf(fp, "%d %s", lines, message);
 
     fclose(fp);
 }
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
 	if (n < 0)
 	    error("ERROR reading from socket");
 	length = atoi(temp);
-	if (strcmp(temp, "\0") != 0) {
+	if (strcmp(temp, "\0\0\0") != 0) {
 	    /** if I have any message then write it to file */
 	    debug_print("\nrecieved length:\n%d", length);
 
@@ -80,6 +80,7 @@ int main(int argc, char* argv[])
 	    debug_print("\nrecieved message:\n%s", message);
 	    /** write or append to logfile based on context */
 	    write_or_append((const char*)argv[2], message);
+	    /** Freeing the allocated memory of the message buffer */
 	    free(message);
 	} else {
 	    /** if EOF, close the socket and start accepting new connections */

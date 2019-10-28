@@ -34,30 +34,16 @@ int main(int argc, char* argv[])
     /** return fd if file exists else create and return fd*/
     /* check port number */
     check_port(argv[1], &port_no);
-    /* create socket */
-    sockfd = socket(AF_INET6, SOCK_STREAM, 0);
-    if (sockfd < 0)
-	error("ERROR opening socket");
-    bzero((char*)&serv_addr, sizeof(serv_addr));
-    serv_addr.sin6_family = AF_INET6;
-    serv_addr.sin6_addr = in6addr_any;
-    serv_addr.sin6_port = htons(port_no);
-    /* bind it */
-    if (bind(sockfd, (struct sockaddr*)&serv_addr,
-	    sizeof(serv_addr))
-	< 0)
-	error("ERROR on binding");
+    /* create and bind socket*/
+    create_and_bind_socket(&sockfd, &port_no, &serv_addr);
+
     /* ready to accept connections */
     listen(sockfd, 5);
 
     clilen = sizeof(cli_addr);
 
     /* waiting for connections */
-    newsockfd = accept(sockfd,
-	(struct sockaddr*)&cli_addr,
-	&clilen);
-    if (newsockfd < 0)
-	error("ERROR on accept");
+    accept_con(&sockfd, &cli_addr, &clilen, &newsockfd);
     while (1) {
 	/* read the message length */
 	char temp[BUFFERLENGTH];
@@ -80,16 +66,13 @@ int main(int argc, char* argv[])
 	    debug_print("\nrecieved message:\n%s", message);
 	    /** write or append to logfile based on context */
 	    write_or_append((const char*)argv[2], message);
+	    /** Freeing the allocated memory of the message buffer */
 	    free(message);
 	} else {
 	    /** if EOF, close the socket and start accepting new connections */
 	    close(newsockfd);
 	    /**   waiting for connections ***/
-	    newsockfd = accept(sockfd,
-		(struct sockaddr*)&cli_addr,
-		&clilen);
-	    if (newsockfd < 0)
-		error("ERROR on accept");
+	    accept_con(&sockfd, &cli_addr, &clilen, &newsockfd);
 	    continue;
 	}
     }
