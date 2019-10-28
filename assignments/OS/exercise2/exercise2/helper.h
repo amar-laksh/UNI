@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +22,11 @@
 	    fprintf(stderr, __VA_ARGS__); \
     } while (0)
 
+typedef struct {
+
+    int* sockfd;
+    const char* filename;
+} request;
 void swap(char* x, char* y)
 {
     char t = *x;
