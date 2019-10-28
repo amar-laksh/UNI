@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     /** Getting message from input */
     while ((chars = getdelim(&buffer, &bufsize, '\n', stdin)) > 0) {
 	/** send message length */
-	itoa(chars, length, 10);
+	itoa(chars + 1, length, 10);
 
 	debug_print("\nsending message: %s\n", length);
 	n = write(sockfd, length, BUFFERLENGTH);
@@ -57,11 +57,11 @@ int main(int argc, char* argv[])
 	/* send message */
 
 	debug_print("\nsending message: %s\n", buffer);
-	n = write(sockfd, buffer, chars);
+	n = write(sockfd, buffer, chars + 1);
 	if (n < 0)
 	    error("ERROR writing to socket");
     }
-    n = write(sockfd, "\0", 1);
+    n = write(sockfd, "\0\0\0", 3);
     if (n < 0)
 	error("ERROR writing to socket");
     close(sockfd);

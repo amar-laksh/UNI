@@ -14,7 +14,7 @@
 #define BUFFERLENGTH 20
 
 //debug prints: set DEBUG to 0 to remove the debug prints from the output
-#define DEBUG 1
+#define DEBUG 0
 #define debug_print(...)                  \
     do {                                  \
 	if (DEBUG)                        \
