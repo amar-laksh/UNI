@@ -4,3 +4,6 @@
 [submodule "assignments/CRYPTO/code/ex1/pydes"]
 	path = assignments/CRYPTO/code/ex1/pydes
 	url = https://github.com/amar-laksh/pydes
+[submodule "assignments/CRYPTO/code/ex2/AES"]
+	path = assignments/CRYPTO/code/ex2/AES
+	url = https://github.com/amar-laksh/Python-AES
