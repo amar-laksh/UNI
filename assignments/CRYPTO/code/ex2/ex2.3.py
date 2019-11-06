@@ -2,7 +2,7 @@ import hashlib
 import time
 import random
 
-SIZE = 10
+SIZE = 15
 
 
 def getHash(x):
@@ -14,11 +14,9 @@ def getHash(x):
 def floyd(f, x0):
     tortoise = f(x0)  # f(x0) is the element/node next to x0.
     hare = f(f(x0))
-    c = 0
     while tortoise != hare:
         tortoise = f(tortoise)
         hare = f(f(hare))
-        c += 1
     tortoise = x0
     while tortoise != hare:
         last_x = tortoise
