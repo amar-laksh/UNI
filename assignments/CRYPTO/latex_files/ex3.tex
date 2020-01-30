@@ -140,7 +140,72 @@ Using modular addition property, we have:
 \end{enumerate}
 
 \section*{Answer - 2:}
-
+\begin{enumerate}
+\item 
+\begin{equation}
+N = p \times q
+\end{equation}
+\begin{equation}
+N = 7 \times 11 = 77
+\end{equation}
+Computing Carmichael's totient function of N:
+\begin{equation}
+\lambda (N) = lcm ( p -1, q - 1) = lcm ( 6, 10) = \frac{6 \times 10}{gcd (6, 10)}
+\end{equation}
+\begin{equation}
+\lambda (N) = \frac{6 \times 10}{2}
+\end{equation}
+\begin{equation}
+\lambda (N) = 30
+\end{equation}
+Computing \textit{d}, the modular multiplicative inverse of \( e (\mod \lambda(n)) \):
+\begin{equation}
+d = e (\mod \lambda(n)) = 67 (\mod 30) = (30 + 37) \mod 30
+\end{equation}
+\begin{equation}
+d = (30 \mod 30 + 37 \mod 30 ) \mod 30
+\end{equation}
+\begin{equation}
+d = (0+ (30 + 7) \mod 30 ) \mod 30
+\end{equation}
+\begin{equation}
+d = ((30 \mod 30 + 7 \mod 30 ) \mod 30 ) \mod 30
+\end{equation}
+\begin{equation}
+d = (7 \mod 30 ) \mod 30
+\end{equation}
+\begin{equation}
+d = 7 \mod 30 = 7
+\end{equation}
+Encryption is as follows:
+\begin{equation}
+c(M) = M^e \mod N = 75 ^ {67} \mod 77 
+\end{equation}
+Using Fermat's little theorem since \textit{67} is a prime number:
+\begin{equation}
+c(M) = (75 \mod 67) \mod 77 
+\end{equation}
+\begin{equation}
+c(M) = ( (67+ 8)\mod 67) \mod 77 
+\end{equation}
+\begin{equation}
+c(M) = (8 \mod 67) \mod 77 
+\end{equation}
+\begin{equation}
+c(M) = 8 \mod 77  = 8
+\end{equation}
+Decryption is as follows:
+\begin{equation}
+M(c) = c^d \mod N = 8 ^ {7} \mod 77 
+\end{equation}
+Using Fermat's little theorem since \textit{7} is a prime number:
+\begin{equation}
+M(c) = c^d \mod N = (8 \mod 7 )\mod 77 
+\end{equation}
+\begin{equation}
+M(c) = c^d \mod N = 1 \mod 77  = 1
+\end{equation}
+\end{enumerate}
 As given in the given question we assume:\newline
 \textit{
 \textbf{

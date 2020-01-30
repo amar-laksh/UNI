@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.11.15)  18 NOV 2019 00:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.11.15)  27 NOV 2019 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -424,62 +424,62 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 ) [1
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 144--152
+] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--152
+Underfull \hbox (badness 10000) in paragraph at lines 209--217
 
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 161.
+(Font)              <8> on input line 226.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 161.
-[2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+(Font)              <6> on input line 226.
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
-[4]
-Overfull \hbox (9.50003pt too wide) in paragraph at lines 280--281
+[5]
+Overfull \hbox (9.50003pt too wide) in paragraph at lines 345--346
 \TU/lmr/m/n/10 have the same result through hash function \TU/lmr/bx/n/10 MY60S
 HA\TU/lmr/m/n/10 : \TU/lmr/m/it/10 ”80e9c6be101e19c” 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 309.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 309.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
  (./ex3.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 309.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 309.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 374.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
 Package rerunfilecheck Info: File `ex3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 309.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
  ) 
 Here is how much of TeX's memory you used:
  10733 strings out of 492483
  147629 string characters out of 6134978
- 442049 words of memory out of 5000000
+ 438049 words of memory out of 5000000
  15110 multiletter control sequences out of 15000+600000
  24362 words of font info for 52 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 31i,6n,40p,779b,1842s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,6n,40p,769b,1842s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ex3.pdf (5 pages).
+Output written on ex3.pdf (6 pages).
