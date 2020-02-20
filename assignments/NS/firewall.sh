@@ -42,5 +42,5 @@ sudo docker start router && \
 
 # Executing containers to the networks
 tmux split-window "sudo docker exec -it  --privileged  router bash -c '/bin/bash'" && \
-tmux split-window "sudo docker exec -it client bash -c '/bin/bash'" && \
-tmux split-window "sudo docker exec -it server bash -c '/bin/bash'"
+tmux split-window "sudo docker exec -it client bash -c '. /etc/apache2/envvars && mkdir -p /var/run/apache2 && /bin/bash'" && \
+tmux split-window "sudo docker exec -it server bash -c '. /etc/apache2/envvars && mkdir -p /var/run/apache2 && /bin/bash'"
