@@ -22,23 +22,25 @@ set -o nounset                                  # Treat unset variables as an er
 # Docker installation section
 # Pulling and setting up docker script
 #sudo docker pull ubuntu && \
-#sudo docker build --no-cache -t ubuntu .
+sudo docker build  -t ubuntu-router router/ &&
+sudo docker build  -t ubuntu-client client/ &&
+sudo docker build  -t ubuntu-server server/ &&
+
 
 # Creating server-net and client-net networks
 sudo docker network create --driver=bridge --subnet=192.168.100.0/24 --ip-range=192.168.100.1/24  client-net && \
 sudo docker network create --driver=bridge --subnet=192.168.101.0/24 --ip-range=192.168.101.1/24  server-net && \
 
 # Attaching containers to the networks
-sudo docker run -itd --network=client-net --name=client ubuntu /bin/bash && \
-sudo docker run -itd --network=server-net --name=server ubuntu /bin/bash && \
+sudo docker run -itd --network=client-net --name=client --hostname=client ubuntu-client /bin/bash && \
+sudo docker run -itd --network=server-net --name=server --hostname=server ubuntu-server /bin/bash && \
 
 # Creating and attaching router container to both server-net and client-net networks
-#sudo docker run -itd --network=server-net --name=router ubuntu /bin/bash && \
-sudo docker create -it --network=server-net  --name=router ubuntu /bin/bash && \
+sudo docker create -it --network=server-net  --name=router --hostname=router ubuntu-router /bin/bash && \
 sudo docker network connect client-net router && \
 sudo docker start router && \
+
 # Executing containers to the networks
-#tmux set-option remain-on-exit on
-tmux split-window "sudo docker exec -it client bash -c 'echo \"192.168.101.2 server\" >> /etc/hosts && cat /etc/hosts'"  && \
-tmux split-window "sudo docker exec -it server bash -c 'echo \"192.168.100.2 client\" >> /etc/hosts && cat /etc/hosts'" && \
-tmux split-window "sudo docker exec -it router bash -c 'cat /etc/hosts'"
+tmux split-window "sudo docker exec -it  --privileged  router bash -c '/bin/bash'" && \
+tmux split-window "sudo docker exec -it client bash -c '/bin/bash'" && \
+tmux split-window "sudo docker exec -it server bash -c '/bin/bash'"

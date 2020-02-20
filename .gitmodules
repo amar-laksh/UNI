@@ -10,3 +10,6 @@
 [submodule "assignments/CRYPTO/code/ex2/Python-AES"]
 	path = assignments/CRYPTO/code/ex2/Python-AES
 	url = https://github.com/pcaro90/Python-AES/
+[submodule "assignments/NS/vrnetlab"]
+	path = assignments/NS/vrnetlab
+	url = https://github.com/plajjan/vrnetlab
