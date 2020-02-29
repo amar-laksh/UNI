@@ -6,16 +6,31 @@ from sklearn.decomposition import PCA
 from itertools import combinations
 import sys
 
+saving=False
+def hist_plot(df, targets, attribute, xlabel='', ylabel="Frequency", save=""):
+    for target in targets:
+        x = df.loc[df.brand == target, attribute]
+        plt.hist(x, label=target)
+    plt.gca().set(title='Histogram', ylabel=ylabel, xlabel=xlabel)
+    plt.legend()
+    if(save != ""):
+        plt.savefig("{}.png".format(save))
+    else:
+        plt.show()
+    plt.clf()
 
-def scree_plot(height, label, xlabel='Percentate of Variance Explained', ylabel='Principal Component',title="PCA Scree Plot"):
+def scree_plot(height, label, xlabel='Percentate of Variance Explained', ylabel='Principal Component',title="PCA Scree Plot", save=""):
     plt.bar(x= range(1,8), height=height, tick_label=label)
     plt.ylabel(xlabel)
     plt.xlabel(ylabel)
     plt.title(title)
-    plt.show()
+    if(save != ""):
+        plt.savefig("{}.png".format(save))
+    else:
+        plt.show()
     plt.clf()
 
-def bi_plot(score,coeff,labels, save=""):
+def bi_plot(score, coeff,labels, save=""):
     xs = score[:,0]
     ys = score[:,1]
     n = coeff.shape[0]
@@ -36,13 +51,13 @@ def bi_plot(score,coeff,labels, save=""):
         plt.show()
     plt.clf()
 
-def proj_plot(df, target, x, y, title="2D Projection", save=""):
+def proj_plot(df, targets, x, y, title="2D Projection", save=""):
     plt.xlabel(x, fontsize = 15)
     plt.ylabel(y, fontsize = 15)
     plt.title(title, fontsize = 20)
 
-    for brand in target:
-        indicesToKeep = df['brand'] == brand
+    for target in targets:
+        indicesToKeep = df['brand'] == target
         plt.scatter(df.loc[indicesToKeep, x]
                 , df.loc[indicesToKeep, y]
                 , s = 50)
@@ -90,33 +105,62 @@ principalDf = pd.DataFrame(data = principalComponents
 
 finalDf = pd.concat([principalDf, df[['brand']]], axis = 1)
 
-print(pca.explained_variance_ratio_)
-
+print("\nEigen Vectors corresponding to attributes:")
+print(pd.DataFrame(pca.components_,columns=scaled_df.columns,index = [pca_columns]))
+print("\nEigen Values corresponding to brands:")
+print(pd.DataFrame(pca.explained_variance_,columns=['brand'],index = [pca_columns]))
 
 
 ######################################################## DRAWING PLOTS
+temp_df = pd.concat([scaled_df, df[['brand']]], axis = 1)
 # Drawing unscaled and scaled boxplots
 df.boxplot(vert=False, grid=False, widths=0.5)
-plt.show()
+if(saving):
+    plt.savefig("./gen_images/raw_boxplot.png")
+else:
+    plt.show()
+plt.clf()
 
 scaled_df.boxplot(vert=False, grid=False, widths=0.5)
-plt.show()
+if(saving):
+    plt.savefig("./gen_images/scaled_boxplot.png")
+else:
+    plt.show()
+plt.clf()
+
+
+#  # Drawing histogram for all attributes
+#  for attribute in attributes:
+    #  saveFile = "./gen_images/histograms/brands_{}".format(attribute)
+    #  if(saving):
+        #  hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency", save=saveFile)
+    #  else:
+        #  hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency")
+#
 
 # Drawing scree plot
-percent_variance = np.round(pca.explained_variance_ratio_* 100, decimals =2)
-scree_plot(percent_variance, pca_columns)
+percent_variance = np.round(pca.explained_variance_ratio_* 100, decimals = 2)
+if(saving):
+    scree_plot(percent_variance, pca_columns, save="./gen_images/scree_plot")
+else:
+    scree_plot(percent_variance, pca_columns)
 
 # 2D projection of  PCA
-proj_plot(finalDf, brands,'PC1', 'PC2', title="PCA Component Anaylsis")
+if(saving):
+    proj_plot(finalDf, brands,'PC1', 'PC2', title="PCA Component Anaylsis", save="./gen_images/pca_projection")
+else:
+    proj_plot(finalDf, brands,'PC1', 'PC2', title="PCA Component Anaylsis")
 
 # Draw bi plot
-bi_plot(principalComponents[:,0:2],np.transpose(pca.components_[0:2, :]), labels=attributes)
+if(saving):
+    bi_plot(principalComponents[:,0:2],np.transpose(pca.components_[0:2, :]), labels=attributes,save="./gen_images/bi_plot")
+else:
+    bi_plot(principalComponents[:,0:2],np.transpose(pca.components_[0:2, :]), labels=attributes)
 
 
-# Going through each attribute to draw 2D Projection
-temp_df = pd.concat([scaled_df, df[['brand']]], axis = 1)
-for combo in combinations(attributes, 2):
-    saveFile = "{}_{}".format(combo[0], combo[1])
-    proj_plot(temp_df, brands, combo[0], combo[1]
-            , title="2D Projection between {} and {}".format(combo[0], combo[1])
-            , save=saveFile)
+#Going through each attribute to draw 2D Projection
+#  for combo in combinations(attributes, 2):
+    #  saveFile = "{}_{}".format(combo[0], combo[1])
+    #  proj_plot(temp_df, brands, combo[0], combo[1]
+            #  , title="2D Projection between {} and {}".format(combo[0], combo[1])
+#              , save=saveFile)
