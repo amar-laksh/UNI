@@ -4,6 +4,42 @@ import matplotlib.pyplot as plt
 from sklearn import preprocessing
 from sklearn.decomposition import PCA
 
+def bi_plot(score,coeff,labels=None):
+    xs = score[:,0]
+    ys = score[:,1]
+    n = coeff.shape[0]
+    scalex = 1.0/(xs.max() - xs.min())
+    scaley = 1.0/(ys.max() - ys.min())
+    plt.scatter(xs * scalex,ys * scaley)
+    for i in range(n):
+        plt.arrow(0, 0, coeff[i,0], coeff[i,1],color = 'r',alpha = 0.5)
+        if labels is None:
+            plt.text(coeff[i,0]* 1.15, coeff[i,1] * 1.15, "Var"+str(i+1), color = 'g', ha = 'center', va = 'center')
+        else:
+            plt.text(coeff[i,0]* 1.15, coeff[i,1] * 1.15, labels[i], color = 'g', ha = 'center', va = 'center')
+    plt.xlim(-1,1)
+    plt.ylim(-1,1)
+    plt.xlabel("PC{}".format(1))
+    plt.ylabel("PC{}".format(2))
+    plt.grid()
+    plt.show()
+
+def pca_plot(df, target):
+    #      fig = plt.figure(figsize = (8,8))
+    #  ax = fig.add_subplot(1,1,1)
+    plt.xlabel('Principal Component 1', fontsize = 15)
+    plt.ylabel('Principal Component 2', fontsize = 15)
+    plt.title('2 component PCA', fontsize = 20)
+
+    for brand in target:
+        indicesToKeep = finalDf['brand'] == brand
+        plt.scatter(finalDf.loc[indicesToKeep, 'PC1']
+                , finalDf.loc[indicesToKeep, 'PC2']
+                , s = 50)
+        plt.legend(brands)
+    plt.grid()
+    plt.show()
+
 data = pd.read_csv('pizza_std.csv', sep=',')
 df = pd.DataFrame(data=data)
 
@@ -52,21 +88,11 @@ principalDf = pd.DataFrame(data = principalComponents
 finalDf = pd.concat([principalDf, df[['brand']]], axis = 1)
 
 
-# Draw PCA
-fig = plt.figure(figsize = (8,8))
-ax = fig.add_subplot(1,1,1)
-ax.set_xlabel('Principal Component 1', fontsize = 15)
-ax.set_ylabel('Principal Component 2', fontsize = 15)
-ax.set_title('2 component PCA', fontsize = 20)
-
-for brand in brands:
-    indicesToKeep = finalDf['brand'] == brand
-    ax.scatter(finalDf.loc[indicesToKeep, 'PC1']
-            , finalDf.loc[indicesToKeep, 'PC2']
-            , s = 50)
-    ax.legend(brands)
-ax.grid()
+# 2D projection of  PCA
+pca_plot(finalDf, brands)
 
 print(pca.explained_variance_ratio_)
 
+# Draw bi plot
+bi_plot(principalComponents[:,0:2],np.transpose(pca.components_[0:2, :]), labels=attrbutes)
 plt.show()
