@@ -149,7 +149,6 @@ Food \sep Pizza \sep PCA
 % \linenumbers
 
 %% main text
-
 \section{Acknowledgement}
 \label{s:acknowledge}
 I would like to thank  Prof. Martin Russell for this educational and challenging assignment, and  Dhilip Subramanian for his pizza dataset.
@@ -157,10 +156,11 @@ I would like to thank  Prof. Martin Russell for this educational and challenging
 \section{Introduction}
 \label{s:introduction}
 The story of making food in a Pizza like fashion goes back to the Neolithic Age \cite{pizzaOrigins1991}. There have been several
-notable instances of Pizza consumption in almost all kinds of cultures ranging from the Persian to Greeks \cite{Persian2014} \cite{Greek2000}
-This is the introduction.  Although, it perfectly clearly that its consumption has only increased in the recent times and topping choices have 
-been extensively discussed, a lot of attributes of the food still remains hidden in mystery. \par
-Through this project, we aim to explore those attributes and their hidden relationships with each other that might influence qualitative aspects of a Pizza.
+notable instances of Pizza consumption in almost all kinds of cultures ranging from the Persian to the Greeks \cite{Persian2014} \cite{Greek2000}
+Although, it's perfectly clear that pizza consumption has only increased in the recent times and toppings choices have 
+been extensively discussed, a lot of attributes of the food still remains hidden. 
+\par
+Through this project, we aim to explore those attributes and their relationships that might influence qualitative aspects of a Pizza.
 \section{Methods}
 \label{s:Methods}
 The results were obtained by using the following python tools (libraries):  \textit{numpy, pandas, matplotlib, sklearn}. \cite{softwares}
@@ -168,7 +168,7 @@ The results were obtained by using the following python tools (libraries):  \tex
 The entire source code of the project containing the generated images and the analysis can be found at: \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment}{Github}.
 \section{Dataset}
 \label{s:Dataset}
-The sample dataset has been retrieved from the following url on the \href{https://data.world/sdhilip/pizza-datasets}{Data World website}. 
+The sample dataset has been retrieved from the \href{https://data.world/sdhilip/pizza-datasets}{Data World website}. 
 The dataset is in the \textbf{\textit{csv}} file format and is \textbf{``\textit{,}'' }separated It is comprised of the following columns:
 \begin{enumerate}
 \item \textbf{brand} -- Pizza brand (class label)
@@ -199,8 +199,8 @@ function. After applying the standardisation, a new box plot was produced and ca
 
 \section{Labelling}
 \label{ss:Labelling}
-Since the original dataset came labelled with the class field \textit{brand}, there is no need for a labelling scheme and the values in the \textit{set} of \textit{brand} namely:
-\textit{A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'} can be used.
+Since the original dataset came labelled with the class field \textit{brand}, there was no need for a labelling scheme and the values in the \textit{set} of \textit{brand} namely:
+\textit{A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'} were used.
 
 \section{Principal Component Analysis}
 \label{ss:PrincipalComponentAnalysis}
@@ -211,7 +211,7 @@ As can be seen from the scree plot, the first two principal components namely: \
 Therefore, only these two principal components were chosen for further analysis.
 \par
 A 2D projection was then generated to cover all the classes through the two chosen principal components and can be seen in Figure~\ref{fig:pca_projection.png}.
-This can be considered a good result as cluster of different classes can be identified uniquely. It might be improved further by adding another principal component
+This can be considered a good result as various clusters of different classes can be uniquely identified. It might be improved further by adding another principal component
 but since the percentage of variance was too low, such a decision was not considered wise.
 \par
 A biplot was also generated to show both the coefficients of the eigenvalues for each attribute and the principal component score for each data point and can be 
@@ -223,16 +223,16 @@ The direction and the length of vectors produced indicates the contribution to t
 \label{ss:CoordinateProjections}
  As vectors close to each are bound to have strong correlations, A 2D projection of the closest
 pair namely, \textit{fat} and \textit{sodium} was generated and can be seen in Fig ~\ref{fig:fat_sodium.png}. It did look promising and hence 2D projections for all
-combination of the attributes were generated to be studied. ( They can be found at \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment/gen_images/attributes}{Github}). Consequently, \textit{mois} was found to be the most important attribute in all the 2D projections as can be seen from Fig ~\ref{fig:mois}.
+combination of the attributes were generated to be studied. ( They can be found at \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment/gen_images/attributes}{Github}). Consequently, \textit{mois} was found to be the most important attribute in all the 2D projections as can be seen from Fig ~\ref{fig:mois} since it clearly separates classes across all attributes.
 \par
-It worth stating that as clear from the biplot, the \textit{mois }vector makes a relatively small angle with \textit{prot }and \textit{ash }vectors and they seem to be positively
-correlated. This can also bee verified by looking at the 2D projections for \textit{prot} and \textit{ash} (especially with \textit{mois}) in which both act as good attributes to cluster the different classes neatly.
+It is also worth stating that as clear from the biplot, the \textit{mois }vector makes a relatively small angle with \textit{prot }and \textit{ash }vectors and they seem to be positively
+correlated. This can also be verified by looking at the 2D projections for \textit{prot} and \textit{ash} (especially with \textit{mois}) in which both act as good attributes to cluster the different classes neatly.
 \section{Histogram Analysis}
 \label{ss:HistogramAnalysis}
 Histograms for each attribute frequency for all the classes were generated and analysed (They can be found at \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment/gen_images/histograms}{Github}). Consequently, a few observations were made:
 \begin{itemize}
 \item The histogram for \textit{mois} attribute shown in Fig~\ref{fig:brands_all.png} , clearly demonstrates that this attribute captures all the class values effectively
-\item The histogram in Fig~\ref{fig:brands_all.png} for \textit{fat, sodium }and \textit{cal} clearly shows segmented large values for the \textit{brand A}. These three attributes can also be seen contributing the most to the PC1 principal component as shown from the Fig~\ref{fig:bi_plot.png} as welll as Table ~\ref{table:eigenvectors}.
+\item The histogram in Fig~\ref{fig:brands_all.png} for \textit{fat, sodium }and \textit{cal} clearly shows segmented positive values for the \textit{brand A}. These three attributes can also be seen contributing the most to the PC1 principal component as shown from the Fig~\ref{fig:bi_plot.png} as welll as Table ~\ref{table:eigenvectors}.
 \item The histograms in Fig~\ref{fig:brands_all.png} also shows that \textit{brand} classes \textit{G, H, I} have the most negative values in the \textit{fat, sodium, cal} attributes. \item The historgrams also show that the brand classes \textit{G, H, I} have positive values  for only the \textit{carb }attribute. Furthermore, From Fig ~\ref{fig:bi_plot.png},  and  Table~\ref{table:eigenvectors} , we can see that \textit{carb }  contributes the most to PC2.
 \end{itemize}
 

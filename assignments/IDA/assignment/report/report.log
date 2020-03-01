@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  1 MAR 2020 05:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  1 MAR 2020 05:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -363,97 +363,97 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/opt/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-<figs/raw_boxplot.png, id=127, 462.528pt x 346.896pt>
+<figs/raw_boxplot.png, id=126, 462.528pt x 346.896pt>
 File: figs/raw_boxplot.png Graphic file (type png)
 <use figs/raw_boxplot.png>
 Package pdftex.def Info: figs/raw_boxplot.png  used on input line 292.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/scaled_boxplot.png, id=129, 462.528pt x 346.896pt>
+<figs/scaled_boxplot.png, id=128, 462.528pt x 346.896pt>
 File: figs/scaled_boxplot.png Graphic file (type png)
 <use figs/scaled_boxplot.png>
 Package pdftex.def Info: figs/scaled_boxplot.png  used on input line 298.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/scree_plot.png, id=130, 462.528pt x 346.896pt>
+<figs/scree_plot.png, id=129, 462.528pt x 346.896pt>
 File: figs/scree_plot.png Graphic file (type png)
 <use figs/scree_plot.png>
 Package pdftex.def Info: figs/scree_plot.png  used on input line 304.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/pca_projection.png, id=131, 462.528pt x 346.896pt>
+<figs/pca_projection.png, id=130, 462.528pt x 346.896pt>
 File: figs/pca_projection.png Graphic file (type png)
 <use figs/pca_projection.png>
 Package pdftex.def Info: figs/pca_projection.png  used on input line 310.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/bi_plot.png, id=132, 462.528pt x 346.896pt>
+<figs/bi_plot.png, id=131, 462.528pt x 346.896pt>
 File: figs/bi_plot.png Graphic file (type png)
 <use figs/bi_plot.png>
 Package pdftex.def Info: figs/bi_plot.png  used on input line 316.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/fat_sodium.png, id=133, 462.528pt x 346.896pt>
+<figs/fat_sodium.png, id=132, 462.528pt x 346.896pt>
 File: figs/fat_sodium.png Graphic file (type png)
 <use figs/fat_sodium.png>
 Package pdftex.def Info: figs/fat_sodium.png  used on input line 323.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/mois_ash.png, id=134, 462.528pt x 346.896pt>
+<figs/mois_ash.png, id=133, 462.528pt x 346.896pt>
 File: figs/mois_ash.png Graphic file (type png)
 <use figs/mois_ash.png>
 Package pdftex.def Info: figs/mois_ash.png  used on input line 330.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_cal.png, id=135, 462.528pt x 346.896pt>
+<figs/mois_cal.png, id=134, 462.528pt x 346.896pt>
 File: figs/mois_cal.png Graphic file (type png)
 <use figs/mois_cal.png>
 Package pdftex.def Info: figs/mois_cal.png  used on input line 331.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_carb.png, id=136, 462.528pt x 346.896pt>
+<figs/mois_carb.png, id=135, 462.528pt x 346.896pt>
 File: figs/mois_carb.png Graphic file (type png)
 <use figs/mois_carb.png>
 Package pdftex.def Info: figs/mois_carb.png  used on input line 333.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_fat.png, id=137, 462.528pt x 346.896pt>
+<figs/mois_fat.png, id=136, 462.528pt x 346.896pt>
 File: figs/mois_fat.png Graphic file (type png)
 <use figs/mois_fat.png>
 Package pdftex.def Info: figs/mois_fat.png  used on input line 334.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_prot.png, id=138, 462.528pt x 346.896pt>
+<figs/mois_prot.png, id=137, 462.528pt x 346.896pt>
 File: figs/mois_prot.png Graphic file (type png)
 <use figs/mois_prot.png>
 Package pdftex.def Info: figs/mois_prot.png  used on input line 336.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_sodium.png, id=139, 462.528pt x 346.896pt>
+<figs/mois_sodium.png, id=138, 462.528pt x 346.896pt>
 File: figs/mois_sodium.png Graphic file (type png)
 <use figs/mois_sodium.png>
 Package pdftex.def Info: figs/mois_sodium.png  used on input line 337.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/brands_mois.png, id=140, 462.528pt x 346.896pt>
+<figs/brands_mois.png, id=139, 462.528pt x 346.896pt>
 File: figs/brands_mois.png Graphic file (type png)
 <use figs/brands_mois.png>
 Package pdftex.def Info: figs/brands_mois.png  used on input line 344.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
-<figs/brands_fat.png, id=141, 462.528pt x 346.896pt>
+<figs/brands_fat.png, id=140, 462.528pt x 346.896pt>
 File: figs/brands_fat.png Graphic file (type png)
 <use figs/brands_fat.png>
 Package pdftex.def Info: figs/brands_fat.png  used on input line 346.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_sodium.png, id=142, 462.528pt x 346.896pt>
+<figs/brands_sodium.png, id=141, 462.528pt x 346.896pt>
 File: figs/brands_sodium.png Graphic file (type png)
 <use figs/brands_sodium.png>
 Package pdftex.def Info: figs/brands_sodium.png  used on input line 347.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_cal.png, id=143, 462.528pt x 346.896pt>
+<figs/brands_cal.png, id=142, 462.528pt x 346.896pt>
 File: figs/brands_cal.png Graphic file (type png)
 <use figs/brands_cal.png>
 Package pdftex.def Info: figs/brands_cal.png  used on input line 348.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_carb.png, id=144, 462.528pt x 346.896pt>
+<figs/brands_carb.png, id=143, 462.528pt x 346.896pt>
 File: figs/brands_carb.png Graphic file (type png)
 <use figs/brands_carb.png>
 Package pdftex.def Info: figs/brands_carb.png  used on input line 350.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_prot.png, id=145, 462.528pt x 346.896pt>
+<figs/brands_prot.png, id=144, 462.528pt x 346.896pt>
 File: figs/brands_prot.png Graphic file (type png)
 <use figs/brands_prot.png>
 Package pdftex.def Info: figs/brands_prot.png  used on input line 351.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_ash.png, id=146, 462.528pt x 346.896pt>
+<figs/brands_ash.png, id=145, 462.528pt x 346.896pt>
 File: figs/brands_ash.png Graphic file (type png)
 <use figs/brands_ash.png>
 Package pdftex.def Info: figs/brands_ash.png  used on input line 352.
@@ -498,11 +498,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
 Here is how much of TeX's memory you used:
  9340 strings out of 481239
  155087 string characters out of 5893912
- 435215 words of memory out of 5000000
+ 434215 words of memory out of 5000000
  24409 multiletter control sequences out of 15000+600000
  539668 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,42p,541b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,42p,541b,376s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/opt/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</opt
 /texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/texliv
 e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></opt/texlive/202
@@ -512,10 +512,10 @@ ts/type1/public/amsfonts/cm/cmr17.pfb></opt/texlive/2020/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti10.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public/cm-sup
 er/sfrm1200.pfb>
-Output written on report.pdf (10 pages, 494366 bytes).
+Output written on report.pdf (10 pages, 494390 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
+ 234 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
  47 named destinations out of 1000 (max. 500000)
  176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
