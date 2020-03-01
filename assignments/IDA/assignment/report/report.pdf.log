@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  1 MAR 2020 00:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  1 MAR 2020 00:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -80,8 +80,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@enLab=\toks16
 \@sep=\skip49
 \@@sep=\skip50
-
-(./elsarticle-template-num.spl)
+ (./report.pdf.spl)
 (/opt/texlive/2020/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip51
@@ -90,7 +89,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count181
 )
 \splwrite=\write3
-\openout3 = `elsarticle-template-num.spl'.
+\openout3 = `report.pdf.spl'.
 
 \appnamewidth=\dimen141
 )
@@ -111,8 +110,8 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count182
 \l__pdf_internal_box=\box49
 )
-(./elsarticle-template-num.aux)
-\openout1 = `elsarticle-template-num.aux'.
+(./report.pdf.aux)
+\openout1 = `report.pdf.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
 LaTeX Font Info:    ... okay on input line 83.
@@ -169,27 +168,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <figs/clus1.jpg, id=15, 222.5916pt x 167.1846pt>
 File: figs/clus1.jpg Graphic file (type jpg)
 <use figs/clus1.jpg>
-Package pdftex.def Info: figs/clus1.jpg  used on input line 206.
+Package pdftex.def Info: figs/clus1.jpg  used on input line 207.
 (pdftex.def)             Requested size: 178.07352pt x 133.74785pt.
  [3] [4 <./figs/clus1.jpg>]
-(./elsarticle-template-num.aux) ) 
+(./report.pdf.aux) ) 
 Here is how much of TeX's memory you used:
- 2293 strings out of 481239
- 29464 string characters out of 5893912
- 262787 words of memory out of 5000000
- 17550 multiletter control sequences out of 15000+600000
+ 2297 strings out of 481239
+ 29416 string characters out of 5893912
+ 262724 words of memory out of 5000000
+ 17553 multiletter control sequences out of 15000+600000
  539309 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,7n,34p,729b,213s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/opt/texlive/2020/texmf-dist/fonts/enc/dvips/
-cm-super/cm-super-ts1.enc}</opt/texlive/2020/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx12.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
-fb></opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt
-/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></opt/texliv
-e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></opt/texlive/2020/
-texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on elsarticle-template-num.pdf (4 pages, 134178 bytes).
+{/opt/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-s
+uper-ts1.enc}</opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+opt/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/texl
+ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></opt/texlive/2020/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></opt/texlive/2020/texmf-dist/fo
+nts/type1/public/cm-super/sfrm1200.pfb>
+Output written on report.pdf.pdf (4 pages, 135972 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  32 compressed objects within 1 object stream
