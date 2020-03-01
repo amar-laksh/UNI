@@ -6,6 +6,8 @@ from sklearn.decomposition import PCA
 from itertools import combinations
 import sys
 
+# Turn it to true if you want to save everything
+
 saving=False
 def hist_plot(df, targets, attribute, xlabel='', ylabel="Frequency", save=""):
     for target in targets:
@@ -129,14 +131,14 @@ else:
 plt.clf()
 
 
-#  # Drawing histogram for all attributes
-#  for attribute in attributes:
-    #  saveFile = "./gen_images/histograms/brands_{}".format(attribute)
-    #  if(saving):
-        #  hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency", save=saveFile)
-    #  else:
-        #  hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency")
-#
+# Drawing histogram for all attributes
+for attribute in attributes:
+    saveFile = "./gen_images/histograms/brands_{}".format(attribute)
+    if(saving):
+        hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency", save=saveFile)
+    else:
+        hist_plot(temp_df, brands, attribute, xlabel=attribute, ylabel="Frequency")
+
 
 # Drawing scree plot
 percent_variance = np.round(pca.explained_variance_ratio_* 100, decimals = 2)
@@ -158,9 +160,13 @@ else:
     bi_plot(principalComponents[:,0:2],np.transpose(pca.components_[0:2, :]), labels=attributes)
 
 
-#Going through each attribute to draw 2D Projection
-#  for combo in combinations(attributes, 2):
-    #  saveFile = "{}_{}".format(combo[0], combo[1])
-    #  proj_plot(temp_df, brands, combo[0], combo[1]
-            #  , title="2D Projection between {} and {}".format(combo[0], combo[1])
-#              , save=saveFile)
+# Going through each attribute to draw 2D Projection
+for combo in combinations(attributes, 2):
+    if(saving):
+        saveFile = "{}_{}".format(combo[0], combo[1])
+        proj_plot(temp_df, brands, combo[0], combo[1]
+                , title="2D Projection between {} and {}".format(combo[0], combo[1])
+                , save=saveFile)
+    else:
+        proj_plot(temp_df, brands, combo[0], combo[1]
+                , title="2D Projection between {} and {}".format(combo[0], combo[1]))

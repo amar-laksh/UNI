@@ -48,6 +48,16 @@
 
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{citecolor=DeepPink4}
+\hypersetup{linkcolor=DarkRed}
+\hypersetup{urlcolor=DarkBlue}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{cleveref}
+\usepackage{subcaption}
+
+
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
 
@@ -105,7 +115,7 @@
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
 
-\title{Partitioning the Parts of a Pizza: Running}
+\title{Partitioning the Parts of a Pizza}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -117,10 +127,10 @@
 \address{School of Computer Science, University of Birmingham}
 
 \begin{abstract}
-Pizza is one of the most popular fast food in the world. In this paper, experiments are conducted over a sample pizza dataset
+Pizza is one of the most popular fast food in the world. In this report, experiments were conducted over a sample pizza dataset
 to develop a better understanding of the various attributes of pizza and their relationships. A number of data-analysis techniques
-like Principal Component Analysis and co-ordinate projections are employed to understand the characteristics of  10 anonymized 
-brand names in the dataset.
+like Principal Component Analysis and co-ordinate projections were employed to understand the characteristics of  10 anonymized 
+brand names in the dataset and 7 different attributes of each pizza.
 \end{abstract}
 
 \begin{keyword}
@@ -139,78 +149,106 @@ Food \sep Pizza \sep PCA
 % \linenumbers
 
 %% main text
+
+\section{Acknowledgement}
+\label{s:acknowledge}
+I would like to thank  Prof. Martin Russell for this educational and challenging assignment, and  Dhilip Subramanian for his pizza dataset.
+
 \section{Introduction}
 \label{s:introduction}
 The story of making food in a Pizza like fashion goes back to the Neolithic Age \cite{pizzaOrigins1991}. There have been several
 notable instances of Pizza consumption in almost all kinds of cultures ranging from the Persian to Greeks \cite{Persian2014} \cite{Greek2000}
-This is the introduction.  Although clearly its consumption has only increased in the recent times and topping choices have been extensively discussed,
-a lot of attributes of the food remains hidden in mystery. Through this project, we aim to explore those attributes and their hidden relationships with
-each other that might influence qualitative aspects of a Pizza.
-\section{Assignment}
-\label{s:assignment}
-%
-\subsection{Submission deadline}
-\label{ss:deadline}
-The submission deadline for this assignment is 5pm on Friday 8th March (week 8).
-%
-\subsection{Assignment details}
-\label{ss:details}
-You can chose any of the data set(s) from the list bellow, but finding your own dataset to investigate is much preferable!  For example, there are many potential text data sets (Twitter, online reviews, etc) and these can be converted to vector format using methods from the course.
-
-If you decide to go the easier route and use some of the data sets provided, un-tar the relevant file and go to the corresponding folder.  The folder contains the data set, as well as additional information about the data. Read the available information, especially the description of the features (data dimensions).
-
-Depending on the software that you use you will need to clean the data, for example so that it contains only numerical features (dimensions) and the features are space-separated (not comma-separated).
-
-To make the plots informative, you should come up with a labeling scheme for data points.
-If the data can be classified into several classes (find out in the data and feature description!), use that information as the basis for your labeling scheme. In that case exclude the class information from the data dimensions that you analyse.  Alternatively, you can make labels out of any dimension, e.g. by quantising it into several intervals. For example, if the data dimension represents age of a person, you can quantise it into 5 labels (classes) [child, teenager, young adult, middle age, old].  Associate the data labels with different markers and use the markers to show what kind of data points get projected to different regions of the visualization plot.
-
-Learn as much as you can about an assigned data set(s) using the visualization and clustering methods developed in the module.
-Use various data labeling schemes.
-In the case of visualization, compare PCA with straightforward co-ordinate projections
-Data sets:
-
+This is the introduction.  Although, it perfectly clearly that its consumption has only increased in the recent times and topping choices have 
+been extensively discussed, a lot of attributes of the food still remains hidden in mystery. \par
+Through this project, we aim to explore those attributes and their hidden relationships with each other that might influence qualitative aspects of a Pizza.
+\section{Methods}
+\label{s:Methods}
+The results were obtained by using the following python tools (libraries):  \textit{numpy, pandas, matplotlib, sklearn}. \cite{softwares}
+\par
+The entire source code of the project containing the generated images and the analysis can be found at: \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment}{Github}.
+\section{Dataset}
+\label{s:Dataset}
+The sample dataset has been retrieved from the following url on the \href{https://data.world/sdhilip/pizza-datasets}{Data World website}. 
+The dataset is in the \textbf{\textit{csv}} file format and is \textbf{``\textit{,}'' }separated It is comprised of the following columns:
+\begin{enumerate}
+\item \textbf{brand} -- Pizza brand (class label)
+\item \textbf{id} -- Sample analysed
+\item \textbf{mois} -- Amount of water per 100 grams in the sample
+\item \textbf{prot} -- Amount of protein per 100 grams in the sample
+\item \textbf{fat} -- Amount of fat per 100 grams in the sample
+\item \textbf{ash} -- Amount of ash per 100 grams in the sample
+\item \textbf{sodium} -- Amount of sodium per 100 grams in the sample
+\item \textbf{carb} -- Amount of carbohydrates per 100 grams in the sample
+\item \textbf{cal} -- Amount of calories per 100 grams in the sample
+\end{enumerate}
+\par
+The following things are to be noted about the dataset:
 \begin{itemize}
-    \item abalone
-    \item boston
-    \item comp.activ
-    \item image
-    \item iris
-    \item letter
+\item The \textbf{\textit{id}} attribute has been removed from the data-set since it doesn't  especially contribute to the analysis of the data.
+\item The \textbf{\textit{brand}} attribute is the class label that already comes with the dataset and thus can be used initially.
+\end{itemize}
+\section{Preprocessing}
+\label{ss:Preprocessing}
+In order to investigate the data any further it was necessary to first check whether the entire dataset had standardised values. To do this, the
+scale of the measurements of the data had to be checked. This was done by creating a box plot which can be seen in Figure~\ref{fig:raw_boxplot}.
+\par
+As is seen from the figure, all the attributes contribute different units to the data and therefore it was necessary to standardize the data.
+\par
+Standardisation for this dataset was done using the \textit{preprocessing} class from the \textit{sklearn} library \cite{scaling2020}  and applying the \textit{fitTransform} 
+function. After applying the standardisation, a new box plot was produced and can be seen in Figure~\ref{fig:scaled_boxplot.png}. 
+
+\section{Labelling}
+\label{ss:Labelling}
+Since the original dataset came labelled with the class field \textit{brand}, there is no need for a labelling scheme and the values in the \textit{set} of \textit{brand} namely:
+\textit{A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'} can be used.
+
+\section{Principal Component Analysis}
+\label{ss:PrincipalComponentAnalysis}
+The standardised data was then put through the \textit{pca} function of the \textit{sklearn} library \cite{pca2020} to generate the eigenvectors, eigenvalues, and the coefficients
+of the eigenvalues. To find the most useful eigenvectors from the PCA step, a scree plot of the percentage of variance was plotted and can be seen in Figure~\ref{fig:scree_plot.png}.
+\par
+As can be seen from the scree plot, the first two principal components namely: \textit{PC1, PC2} contribute nearly \textbf{59\% }and \textbf{32\% }of variances respectively.
+Therefore, only these two principal components were chosen for further analysis.
+\par
+A 2D projection was then generated to cover all the classes through the two chosen principal components and can be seen in Figure~\ref{fig:pca_projection.png}.
+This can be considered a good result as cluster of different classes can be identified uniquely. It might be improved further by adding another principal component
+but since the percentage of variance was too low, such a decision was not considered wise.
+\par
+A biplot was also generated to show both the coefficients of the eigenvalues for each attribute and the principal component score for each data point and can be 
+seen in Figure~\ref{fig:bi_plot.png}. Furthermore, Table~\ref{table:eigenvectors} and Table~\ref{table:eigenvalues} show the corresponding eigenvectors and eigenvalues.
+\par
+The direction and the length of vectors produced indicates the contribution to the principal components from each attribute. For example it can be observed from Fig ~\ref{fig:bi_plot.png} that attributes such as \textit{mois, cal, prot, fat, ash, sodium} being on the the right side of the y-axis most contributed to \textit{PC1}, while 
+\textit{carb, fat} being above the x-axis most contributed to \textit{PC2}.
+\section{Coordinate Projections}
+\label{ss:CoordinateProjections}
+ As vectors close to each are bound to have strong correlations, A 2D projection of the closest
+pair namely, \textit{fat} and \textit{sodium} was generated and can be seen in Fig ~\ref{fig:fat_sodium.png}. It did look promising and hence 2D projections for all
+combination of the attributes were generated to be studied. ( They can be found at \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment/gen_images/attributes}{Github}). Consequently, \textit{mois} was found to be the most important attribute in all the 2D projections as can be seen from Fig ~\ref{fig:mois}.
+\par
+It worth stating that as clear from the biplot, the \textit{mois }vector makes a relatively small angle with \textit{prot }and \textit{ash }vectors and they seem to be positively
+correlated. This can also bee verified by looking at the 2D projections for \textit{prot} and \textit{ash} (especially with \textit{mois}) in which both act as good attributes to cluster the different classes neatly.
+\section{Histogram Analysis}
+\label{ss:HistogramAnalysis}
+Histograms for each attribute frequency for all the classes were generated and analysed (They can be found at \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment/gen_images/histograms}{Github}). Consequently, a few observations were made:
+\begin{itemize}
+\item The histogram for \textit{mois} attribute shown in Fig~\ref{fig:brands_all.png} , clearly demonstrates that this attribute captures all the class values effectively
+\item The histogram in Fig~\ref{fig:brands_all.png} for \textit{fat, sodium }and \textit{cal} clearly shows segmented large values for the \textit{brand A}. These three attributes can also be seen contributing the most to the PC1 principal component as shown from the Fig~\ref{fig:bi_plot.png} as welll as Table ~\ref{table:eigenvectors}.
+\item The histograms in Fig~\ref{fig:brands_all.png} also shows that \textit{brand} classes \textit{G, H, I} have the most negative values in the \textit{fat, sodium, cal} attributes. \item The historgrams also show that the brand classes \textit{G, H, I} have positive values  for only the \textit{carb }attribute. Furthermore, From Fig ~\ref{fig:bi_plot.png},  and  Table~\ref{table:eigenvectors} , we can see that \textit{carb }  contributes the most to PC2.
 \end{itemize}
 
-Before starting to work on the assignment, please carefully study the example that Dr Tino prepared using the boston database. Un-tar the file boston.ex.tar.gz and go to the folder ``BOSTON.EX''.   The sub-folder ``FIGURES'' contains all the relevant figures as eps or gif files. Please consult the ``boston.read.me'' file in BOSTON.EX.
-
-The report should describe experiments with a chosen data set(s) along the lines of the ``boston'' example.  In the labeling scheme, concentrate on more than one coordinate (dimension), e.g. in the ``boston'' example don't just consider the `price' feature, but run separate experiments with `per capita crime rate in the town', or 'pupil-teacher ratio in the town' instead of the `price' coordinate.
-\subsection{Marking scheme}
-\label{ss:marking}
-In the report concentrate on the following questions:
+\section{Conclusion}
+\label{s:Conclusion}
+Standardisation of data was necessary and all calculations were based on the standardised dataset.
+The following were the observations noted at the conclusion:
 \begin{itemize}
-    \item How did you pre-process the data? (worth 20%)
-    \item What features (coordinates) did you use for labeling the projected points with different markers? (worth 10%)
-    \item How did you design the labeling schemes? (worth 20%)
-    \item What interesting aspects of the data did you detect based on the data visualisations? (worth 30%)
-    \item What interesting aspects of the data did you detect based on eigenvector and eigenvalue analysis of the data covariance matrix? (worth 20%)
+\item Adding a 3rd principal component can increase the accuracy of predictions.
+\item Projections of \textit{mois} seems to be the best method to predict different brands of pizzas in the dataset.
+\item There seems to be close relationships between \textit{fat, sodium, cal } attributes as derived from PCA.
+\item Brand \textit{A} seems to be easy to predict using PC1 and usually contains high amounts of \textit{fat, } \textit{sodium }and \textit{cal}.
+\item Brand \textit{G, H, I} seem to be predicted by using PC2 and are usually low in \textit{fat, sodium }and \textit{cal} values.
+\item \textit{mois, ash, prot} seem to be a good set of predictors for classes.
+\item Further clustering techniques can definitely be applied to the dataset to procure more knowledge based on the 2D projections produced.
 \end{itemize}
-You should demonstrate that you
-\begin{itemize}
-    \item Understand the visualisation techniques used
-    \item Are able to extract useful information about otherwise inconceivable high-dimensional data using dimensionality-reducing visualisation techniques.
-    \item The overall mark m (in the range 0-100\%) will be linearly scaled to the range 0-20\% by 0.2*m.
-\end{itemize}
-For examples of nice past reports developed on the "wine dataset" (do not use this data in your report!), please see reports by Christoph Stich and Josephf Preece.
-
-\section{Acknowledgement}
-\label{s:acknowledge}
-I would like to thank Dr Peter Tino for permission to use this assignment, and Christoph Stich and Joseph Preece for their example reports.
-
-\section{Including figures}
-\label{s:another-section}
-Here is a figure:
-\begin{figure}[ht]
-    \centerline{\includegraphics[scale=0.8]{figs/clus1.jpg}}
-    \caption{An example figure (JPG)}
-\end{figure}
-
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
@@ -238,18 +276,121 @@ Here is a figure:
 %% References without bibTeX database:
 
 \begin{thebibliography}{00}
-
 %% \bibitem must have the following form:
 %%   \bibitem{key}...
 %%
-
+\bibitem{pizzaOrigins1991} Perry, C. {\em A Stone-Age Snack : History: Pizza topped with tomatoes, pepperoni and cheese is only 100 years old}. Los Angeles Times,1991
 \bibitem{Persian2014} Barrett, L  {\em Pizza, A Slice of American History}, 2014,13.
 \bibitem{Greek2000} Buonassisi, R. {\em Pizza: From its Italian Origins to the Modern Table. Firefly.} , 2000, 78.
-\bibitem{pizzaOrigins1991} Perry, C. {\em A Stone-Age Snack : History: Pizza topped with tomatoes, pepperoni and cheese is only 100 years old, if that. But the basic idea of pizza actually goes back thousands of years}. Los Angeles Times,1991
-\bibitem{baber2017} Baber, C., Russell, M., Wing, A., Hermsdorfer, J. \& Khattab, A, {\em Creating Affording Situations: Coaching through Animate Objects}, Sensors, {\bf 17}, 2308, 2017
-\bibitem{maaki2020} Dolan S. {\em mov is Turing-complete}. Cl. Cam. Ac. Uk. 2013:1-4
+\bibitem{softwares} \href{https://numpy.org/}{NymPy}, \href{https://pandas.pydata.org/}{Pandas},\href{https://matplotlib.org/}{Matplotlib}, \href{https://scikit-learn.org/stable/index.html}{Scikit-learn}
+\bibitem{scaling2020} \href{https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html}{Importance of Scaling}
+\bibitem{pca2020} \href{https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html}{Sci-kit learn PCA function docs}
 \end{thebibliography}
 
+\begin{figure}[b]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/raw_boxplot.png}}
+    \caption{A box plot showing the raw ranges of the dataset}\label{fig:raw_boxplot}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/scaled_boxplot.png}}
+    \caption{A box plot showing the standardised values of the dataset}\label{fig:scaled_boxplot.png}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/scree_plot.png}}
+    \caption{A scree plot over the various principal components}\label{fig:scree_plot.png}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/pca_projection.png}}
+    \caption{A 2D Projection over the  two Principal Components}\label{fig:pca_projection.png}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/bi_plot.png}}
+    \caption{A biplot presenting the coefficients for each attribute}\label{fig:bi_plot.png}
+\end{figure}
+
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[scale=0.6]{figs/fat_sodium.png}}
+    \caption{A 2D Projection over Fat and Sodium}\label{fig:fat_sodium.png}
+\end{figure}
+
+
+\begin{figure}[hb]
+	\centering
+	\subfloat {\includegraphics[width=4cm]{figs/mois_ash.png}}
+	\subfloat{\includegraphics[width=4cm]{figs/mois_cal.png}}
+	\qquad	
+	\subfloat{\includegraphics[width=4cm]{figs/mois_carb.png}}
+	\subfloat{\includegraphics[width=4cm]{figs/mois_fat.png}}
+    \qquad
+	\subfloat{\includegraphics[width=4cm]{figs/mois_prot.png}}
+	\subfloat{\includegraphics[width=4cm]{figs/mois_sodium.png}}
+    \caption{2D Projections of \textit{mois} with other attributes}
+    \label{fig:mois}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+	\subfloat{\includegraphics[width=8cm]{figs/brands_mois.png}}
+	\qquad
+	\subfloat {\includegraphics[width=5cm]{figs/brands_fat.png}}
+	\subfloat{\includegraphics[width=5cm]{figs/brands_sodium.png}}
+	\subfloat{\includegraphics[width=5cm]{figs/brands_cal.png}}
+	\qquad	
+	\subfloat{\includegraphics[width=5cm]{figs/brands_carb.png}}
+	\subfloat{\includegraphics[width=5cm]{figs/brands_prot.png}}
+	\subfloat{\includegraphics[width=5cm]{figs/brands_ash.png}}
+	
+    \caption{Histograms of \textit{mois, fat, sodium, cal, carb, prot, ash}}
+    \label{fig:brands_all.png}
+\end{figure}
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c| |c| |c| |c| |c| |c| |c| |c|}
+\hline
+ PCs & mois & prot & fat & ash & sodium & carb & cal \\ [0.2ex] 
+ \hline
+ PC1 & 0.064709 & 0.378761 & 0.446666 & 0.471890  & 0.435703 & -0.424914 & 0.244487 \\
+ PC2 & -0.628276 & -0.269707 & 0.234379 & -0.110990  & 0.201662  & 0.320312  & 0.567458 \\
+ PC3 & -0.421669 & 0.746027 & -0.199309 & 0.056273 & -0.455169 & 0.052237 & 0.113316 \\
+ PC4 & -0.220722 & -0.010593 & -0.507042 & 0.552399 & 0.446277 & 0.334339 & -0.279263 \\
+ PC5 & -0.006470 & -0.387983 & 0.173368 & 0.670886 & -0.602614 & 0.007437 & 0.078003 \\
+ PC6 & 0.446450 & -0.000172 & -0.525403 & 0.058861 & 0.003131 & -0.000509 & 0.721914 \\
+ PC7 & 0.418569 & 0.276765 & 0.377672 & 0.056021 & -0.000524 & 0.776068 & 0.012060 \\ [1ex]
+  \hline\hline
+\end{tabular}
+\caption{Table showing PCA eigenvectors for each attribute}\label{table:eigenvectors}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c| |c| }
+\hline
+ PCs & brand\\ [0.2ex] 
+ \hline
+PC1 & 4.185734 \\
+PC2 & 2.298118 \\
+PC3 & 0.415949 \\
+PC4 & 0.095493 \\
+PC5 & 0.027770 \\ 
+PC6 & 0.000339 \\
+PC7 & 0.000010 \\
+  \hline\hline
+\end{tabular}
+\caption{Table showing PCA eigenvalues over the class}\label{table:eigenvalues}
+\end{table}
 
 \end{document}
 
