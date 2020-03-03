@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  1 MAR 2020 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.2.18)  3 MAR 2020 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**elsarticle-template-num.tex elsarticle-template-harv.tex
+**elsarticle-template-num.tex
 (./elsarticle-template-num.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (./elsarticle.cls
@@ -364,117 +364,117 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/opt/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [
 5]
-<figs/raw_boxplot.png, id=135, 462.528pt x 346.896pt>
+<figs/raw_boxplot.png, id=138, 462.528pt x 346.896pt>
 File: figs/raw_boxplot.png Graphic file (type png)
 <use figs/raw_boxplot.png>
-Package pdftex.def Info: figs/raw_boxplot.png  used on input line 303.
+Package pdftex.def Info: figs/raw_boxplot.png  used on input line 307.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/scaled_boxplot.png, id=137, 462.528pt x 346.896pt>
+<figs/scaled_boxplot.png, id=140, 462.528pt x 346.896pt>
 File: figs/scaled_boxplot.png Graphic file (type png)
 <use figs/scaled_boxplot.png>
-Package pdftex.def Info: figs/scaled_boxplot.png  used on input line 309.
+Package pdftex.def Info: figs/scaled_boxplot.png  used on input line 313.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/scree_plot.png, id=138, 462.528pt x 346.896pt>
+<figs/scree_plot.png, id=141, 462.528pt x 346.896pt>
 File: figs/scree_plot.png Graphic file (type png)
 <use figs/scree_plot.png>
-Package pdftex.def Info: figs/scree_plot.png  used on input line 315.
+Package pdftex.def Info: figs/scree_plot.png  used on input line 319.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/pca_projection.png, id=139, 462.528pt x 346.896pt>
+<figs/pca_projection.png, id=142, 462.528pt x 346.896pt>
 File: figs/pca_projection.png Graphic file (type png)
 <use figs/pca_projection.png>
-Package pdftex.def Info: figs/pca_projection.png  used on input line 321.
+Package pdftex.def Info: figs/pca_projection.png  used on input line 325.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/bi_plot.png, id=140, 462.528pt x 346.896pt>
+<figs/bi_plot.png, id=143, 462.528pt x 346.896pt>
 File: figs/bi_plot.png Graphic file (type png)
 <use figs/bi_plot.png>
-Package pdftex.def Info: figs/bi_plot.png  used on input line 327.
+Package pdftex.def Info: figs/bi_plot.png  used on input line 331.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/fat_sodium.png, id=141, 462.528pt x 346.896pt>
+<figs/fat_sodium.png, id=144, 462.528pt x 346.896pt>
 File: figs/fat_sodium.png Graphic file (type png)
 <use figs/fat_sodium.png>
-Package pdftex.def Info: figs/fat_sodium.png  used on input line 334.
+Package pdftex.def Info: figs/fat_sodium.png  used on input line 338.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
-<figs/mois_ash.png, id=142, 462.528pt x 346.896pt>
+<figs/mois_ash.png, id=145, 462.528pt x 346.896pt>
 File: figs/mois_ash.png Graphic file (type png)
 <use figs/mois_ash.png>
-Package pdftex.def Info: figs/mois_ash.png  used on input line 341.
+Package pdftex.def Info: figs/mois_ash.png  used on input line 345.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_cal.png, id=143, 462.528pt x 346.896pt>
+<figs/mois_cal.png, id=146, 462.528pt x 346.896pt>
 File: figs/mois_cal.png Graphic file (type png)
 <use figs/mois_cal.png>
-Package pdftex.def Info: figs/mois_cal.png  used on input line 342.
+Package pdftex.def Info: figs/mois_cal.png  used on input line 346.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_carb.png, id=144, 462.528pt x 346.896pt>
+<figs/mois_carb.png, id=147, 462.528pt x 346.896pt>
 File: figs/mois_carb.png Graphic file (type png)
 <use figs/mois_carb.png>
-Package pdftex.def Info: figs/mois_carb.png  used on input line 344.
+Package pdftex.def Info: figs/mois_carb.png  used on input line 348.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_fat.png, id=145, 462.528pt x 346.896pt>
+<figs/mois_fat.png, id=148, 462.528pt x 346.896pt>
 File: figs/mois_fat.png Graphic file (type png)
 <use figs/mois_fat.png>
-Package pdftex.def Info: figs/mois_fat.png  used on input line 345.
+Package pdftex.def Info: figs/mois_fat.png  used on input line 349.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_prot.png, id=146, 462.528pt x 346.896pt>
+<figs/mois_prot.png, id=149, 462.528pt x 346.896pt>
 File: figs/mois_prot.png Graphic file (type png)
 <use figs/mois_prot.png>
-Package pdftex.def Info: figs/mois_prot.png  used on input line 347.
+Package pdftex.def Info: figs/mois_prot.png  used on input line 351.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/mois_sodium.png, id=147, 462.528pt x 346.896pt>
+<figs/mois_sodium.png, id=150, 462.528pt x 346.896pt>
 File: figs/mois_sodium.png Graphic file (type png)
 <use figs/mois_sodium.png>
-Package pdftex.def Info: figs/mois_sodium.png  used on input line 348.
+Package pdftex.def Info: figs/mois_sodium.png  used on input line 352.
 (pdftex.def)             Requested size: 113.81102pt x 85.35814pt.
-<figs/brands_mois.png, id=148, 462.528pt x 346.896pt>
+<figs/brands_mois.png, id=151, 462.528pt x 346.896pt>
 File: figs/brands_mois.png Graphic file (type png)
 <use figs/brands_mois.png>
-Package pdftex.def Info: figs/brands_mois.png  used on input line 355.
+Package pdftex.def Info: figs/brands_mois.png  used on input line 359.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
-<figs/brands_fat.png, id=149, 462.528pt x 346.896pt>
+<figs/brands_fat.png, id=152, 462.528pt x 346.896pt>
 File: figs/brands_fat.png Graphic file (type png)
 <use figs/brands_fat.png>
-Package pdftex.def Info: figs/brands_fat.png  used on input line 357.
+Package pdftex.def Info: figs/brands_fat.png  used on input line 361.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_sodium.png, id=150, 462.528pt x 346.896pt>
+<figs/brands_sodium.png, id=153, 462.528pt x 346.896pt>
 File: figs/brands_sodium.png Graphic file (type png)
 <use figs/brands_sodium.png>
-Package pdftex.def Info: figs/brands_sodium.png  used on input line 358.
+Package pdftex.def Info: figs/brands_sodium.png  used on input line 362.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_cal.png, id=151, 462.528pt x 346.896pt>
+<figs/brands_cal.png, id=154, 462.528pt x 346.896pt>
 File: figs/brands_cal.png Graphic file (type png)
 <use figs/brands_cal.png>
-Package pdftex.def Info: figs/brands_cal.png  used on input line 359.
+Package pdftex.def Info: figs/brands_cal.png  used on input line 363.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_carb.png, id=152, 462.528pt x 346.896pt>
+<figs/brands_carb.png, id=155, 462.528pt x 346.896pt>
 File: figs/brands_carb.png Graphic file (type png)
 <use figs/brands_carb.png>
-Package pdftex.def Info: figs/brands_carb.png  used on input line 361.
+Package pdftex.def Info: figs/brands_carb.png  used on input line 365.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_prot.png, id=153, 462.528pt x 346.896pt>
+<figs/brands_prot.png, id=156, 462.528pt x 346.896pt>
 File: figs/brands_prot.png Graphic file (type png)
 <use figs/brands_prot.png>
-Package pdftex.def Info: figs/brands_prot.png  used on input line 362.
+Package pdftex.def Info: figs/brands_prot.png  used on input line 366.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
-<figs/brands_ash.png, id=154, 462.528pt x 346.896pt>
+<figs/brands_ash.png, id=157, 462.528pt x 346.896pt>
 File: figs/brands_ash.png Graphic file (type png)
 <use figs/brands_ash.png>
-Package pdftex.def Info: figs/brands_ash.png  used on input line 363.
+Package pdftex.def Info: figs/brands_ash.png  used on input line 367.
 (pdftex.def)             Requested size: 142.26378pt x 106.70032pt.
 
-Overfull \hbox (36.79134pt too wide) in paragraph at lines 355--364
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 359--368
  [][][] 
  []
 
 
-Overfull \hbox (36.79134pt too wide) in paragraph at lines 355--364
+Overfull \hbox (36.79134pt too wide) in paragraph at lines 359--368
  [][][] 
  []
 
 
-Overfull \hbox (80.49083pt too wide) in paragraph at lines 372--385
+Overfull \hbox (80.49083pt too wide) in paragraph at lines 376--389
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 406.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
 [6] [7 <./figs/raw_boxplot.png> <./figs/scaled_boxplot.png>] [8 <./figs/scree_p
 lot.png> <./figs/pca_projection.png>] [9 <./figs/bi_plot.png> <./figs/fat_sodiu
 m.png>] [10 <./figs/mois_ash.png> <./figs/mois_cal.png> <./figs/mois_carb.png> 
@@ -482,22 +482,22 @@ m.png>] [10 <./figs/mois_ash.png> <./figs/mois_cal.png> <./figs/mois_carb.png>
 igs/brands_mois.png> <./figs/brands_fat.png> <./figs/brands_sodium.png> <./figs
 /brands_cal.png> <./figs/brands_carb.png> <./figs/brands_prot.png> <./figs/bran
 ds_ash.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 406.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 406.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 406.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D42FB0A9A9A5E7A4F64E7AB9CAF3A627;548.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 406.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
  ) 
 Here is how much of TeX's memory you used:
- 9345 strings out of 481239
- 155163 string characters out of 5893912
+ 9349 strings out of 481239
+ 155240 string characters out of 5893912
  432215 words of memory out of 5000000
- 24412 multiletter control sequences out of 15000+600000
+ 24415 multiletter control sequences out of 15000+600000
  539668 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,42p,541b,433s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,42p,512b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/opt/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</opt
 /texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/texliv
 e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></opt/texlive/202
@@ -507,10 +507,10 @@ ts/type1/public/amsfonts/cm/cmr17.pfb></opt/texlive/2020/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti10.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb></opt/texlive/2020/texmf-dist/fonts/type1/public/cm-sup
 er/sfrm1200.pfb>
-Output written on report.pdf (11 pages, 495476 bytes).
+Output written on report.pdf (11 pages, 495968 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
  184 words of extra memory for PDF output out of 10000 (max. 10000000)
 

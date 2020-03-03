@@ -130,7 +130,7 @@
 \begin{abstract}
 Pizza is one of the most popular fast food in the world. In this report, experiments were conducted over a sample pizza dataset
 to develop a better understanding of the various attributes of pizza and their relationships. A number of data-analysis techniques
-like Principal Component Analysis and co-ordinate projections were employed to understand the characteristics of  10 anonymized 
+like Principal Component Analysis and co-ordinate projections were employed to understand the characteristics of  10 anonymized
 brand names in the dataset and 7 different attributes of each pizza.
 \end{abstract}
 
@@ -158,8 +158,8 @@ I would like to thank  Prof. Martin Russell for this educational and challenging
 \label{s:introduction}
 The story of making food in a Pizza like fashion goes back to the Neolithic Age \cite{pizzaOrigins1991}. There have been several
 notable instances of Pizza consumption in almost all kinds of cultures ranging from the Persian to the Greeks \cite{Persian2014} \cite{Greek2000}
-Although, it's perfectly clear that pizza consumption has only increased in the recent times and toppings choices have 
-been extensively discussed, a lot of attributes of the food still remains hidden. 
+Although, it's perfectly clear that pizza consumption has only increased in the recent times and toppings choices have
+been extensively discussed, a lot of attributes of the food still remains hidden.
 \par
 \section{Research Questions}
 \label{s:ResearchQuestions}
@@ -179,7 +179,7 @@ The results were obtained by using the following python tools (libraries):  \tex
 The entire source code of the project containing the generated images and the analysis can be found at: \href{https://github.com/amar-laksh/UNI/tree/master/assignments/IDA/assignment}{Github}.
 \section{Dataset}
 \label{s:Dataset}
-The sample dataset has been retrieved from the \href{https://data.world/sdhilip/pizza-datasets}{Data World website}. 
+The sample dataset has been retrieved from the \href{https://data.world/sdhilip/pizza-datasets}{Data World website}.
 The dataset is in the \textbf{\textit{csv}} file format and is \textbf{``\textit{,}'' }separated It is comprised of the following columns:
 \begin{enumerate}
 \item \textbf{brand} -- Pizza brand (class label)
@@ -205,8 +205,8 @@ scale of the measurements of the data had to be checked. This was done by creati
 \par
 As is seen from the figure, all the attributes contribute different units to the data and therefore it was necessary to standardize the data.
 \par
-Standardisation for this dataset was done using the \textit{preprocessing} class from the \textit{sklearn} library \cite{scaling2020}  and applying the \textit{fitTransform} 
-function. After applying the standardisation, a new box plot was produced and can be seen in Figure~\ref{fig:scaled_boxplot.png}. 
+Standardisation for this dataset was done using the \textit{preprocessing} class from the \textit{sklearn} library \cite{scaling2020}  and applying the \textit{fitTransform}
+function. After applying the standardisation, a new box plot was produced and can be seen in Figure~\ref{fig:scaled_boxplot.png}.
 
 \section{Labelling}
 \label{ss:Labelling}
@@ -225,10 +225,10 @@ A 2D projection was then generated to cover all the classes through the two chos
 This can be considered a good result as various clusters of different classes can be uniquely identified. It might be improved further by adding another principal component
 but since the percentage of variance was too low, such a decision was not considered wise.
 \par
-A biplot was also generated to show both the coefficients of the eigenvalues for each attribute and the principal component score for each data point and can be 
+A biplot was also generated to show both the coefficients of the eigenvalues for each attribute and the principal component score for each data point and can be
 seen in Figure~\ref{fig:bi_plot.png}. Furthermore, Table~\ref{table:eigenvectors} and Table~\ref{table:eigenvalues} show the corresponding eigenvectors and eigenvalues.
 \par
-The direction and the length of vectors produced indicates the contribution to the principal components from each attribute. For example it can be observed from Fig ~\ref{fig:bi_plot.png} that attributes such as \textit{mois, cal, prot, fat, ash, sodium} being on the the right side of the y-axis most contributed to \textit{PC1}, while 
+The direction and the length of vectors produced indicates the contribution to the principal components from each attribute. For example it can be observed from Fig ~\ref{fig:bi_plot.png} that attributes such as \textit{mois, cal, prot, fat, ash, sodium} being on the the right side of the y-axis most contributed to \textit{PC1}, while
 \textit{carb, fat} being above the x-axis most contributed to \textit{PC2}.
 \section{Coordinate Projections}
 \label{ss:CoordinateProjections}
@@ -260,6 +260,8 @@ The following were the observations noted at the conclusion:
 \item \textit{mois, ash, prot} seem to be a good set of predictors for classes.
 \item Further clustering techniques can definitely be applied to the dataset to procure more knowledge based on the 2D projections produced.
 \end{itemize}
+
+A further research area could be analysing the data from the OpenFood Dataset \cite{openFood2020} and applying the same methodology to a relatively large and real-world dataset.
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
@@ -296,7 +298,9 @@ The following were the observations noted at the conclusion:
 \bibitem{softwares} \href{https://numpy.org/}{NymPy}, \href{https://pandas.pydata.org/}{Pandas},\href{https://matplotlib.org/}{Matplotlib}, \href{https://scikit-learn.org/stable/index.html}{Scikit-learn}
 \bibitem{scaling2020} \href{https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html}{Importance of Scaling}
 \bibitem{pca2020} \href{https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html}{Sci-kit learn PCA function docs}
+\bibitem{openFood2020} \href{https://world.openfoodfacts.org/data}{Open Food dataset}
 \end{thebibliography}
+
 
 \begin{figure}[b]
 	\centering
@@ -340,7 +344,7 @@ The following were the observations noted at the conclusion:
 	\centering
 	\subfloat {\includegraphics[width=4cm]{figs/mois_ash.png}}
 	\subfloat{\includegraphics[width=4cm]{figs/mois_cal.png}}
-	\qquad	
+	\qquad
 	\subfloat{\includegraphics[width=4cm]{figs/mois_carb.png}}
 	\subfloat{\includegraphics[width=4cm]{figs/mois_fat.png}}
     \qquad
@@ -357,11 +361,11 @@ The following were the observations noted at the conclusion:
 	\subfloat {\includegraphics[width=5cm]{figs/brands_fat.png}}
 	\subfloat{\includegraphics[width=5cm]{figs/brands_sodium.png}}
 	\subfloat{\includegraphics[width=5cm]{figs/brands_cal.png}}
-	\qquad	
+	\qquad
 	\subfloat{\includegraphics[width=5cm]{figs/brands_carb.png}}
 	\subfloat{\includegraphics[width=5cm]{figs/brands_prot.png}}
 	\subfloat{\includegraphics[width=5cm]{figs/brands_ash.png}}
-	
+
     \caption{Histograms of \textit{mois, fat, sodium, cal, carb, prot, ash}}
     \label{fig:brands_all.png}
 \end{figure}
@@ -371,7 +375,7 @@ The following were the observations noted at the conclusion:
 \centering
 \begin{tabular}{ |c| |c| |c| |c| |c| |c| |c| |c|}
 \hline
- PCs & mois & prot & fat & ash & sodium & carb & cal \\ [0.2ex] 
+ PCs & mois & prot & fat & ash & sodium & carb & cal \\ [0.2ex]
  \hline
  PC1 & 0.064709 & 0.378761 & 0.446666 & 0.471890  & 0.435703 & -0.424914 & 0.244487 \\
  PC2 & -0.628276 & -0.269707 & 0.234379 & -0.110990  & 0.201662  & 0.320312  & 0.567458 \\
@@ -389,13 +393,13 @@ The following were the observations noted at the conclusion:
 \centering
 \begin{tabular}{ |c| |c| }
 \hline
- PCs & brand\\ [0.2ex] 
+ PCs & brand\\ [0.2ex]
  \hline
 PC1 & 4.185734 \\
 PC2 & 2.298118 \\
 PC3 & 0.415949 \\
 PC4 & 0.095493 \\
-PC5 & 0.027770 \\ 
+PC5 & 0.027770 \\
 PC6 & 0.000339 \\
 PC7 & 0.000010 \\
   \hline\hline
