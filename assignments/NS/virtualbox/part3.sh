@@ -18,7 +18,7 @@
 #===============================================================================
 
 set -o nounset                                  # Treat unset variables as an error
-MY_IP="192.168.101.2"
+MY_IP="192.168.101.2/24"
 
 # Flushing all existing chains
 sudo iptables -F INPUT &&
@@ -36,5 +36,8 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
 sudo iptables --append INPUT --protocol tcp --dst $MY_IP --dport 22 --jump ACCEPT &&
-sudo iptables --append INPUT --protocol udp --dst $MY_IP --dport 22 --jump ACCEPT
+sudo iptables --append INPUT --protocol udp --dst $MY_IP --dport 22 --jump ACCEPT &&
+sudo iptables --append OUTPUT --protocol tcp --src $MY_IP --dport 22 --jump ACCEPT &&
+sudo iptables --append OUTPUT --protocol udp --src $MY_IP --dport 22 --jump ACCEPT
+
 
