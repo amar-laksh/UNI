@@ -18,7 +18,7 @@
 #===============================================================================
 
 set -o nounset                                  # Treat unset variables as an error
-MY_IP="192.168.101.2/24"
+MY_IP="192.168.101.2"
 
 # Flushing all existing chains
 sudo iptables -F INPUT &&
@@ -28,7 +28,7 @@ sudo iptables -F OUTPUT &&
 # Setting default permit rules
 sudo iptables -P INPUT DROP &&
 sudo iptables -P OUTPUT ACCEPT &&
-sudo iptables -P FORWARD DROP &&
+#sudo iptables -P FORWARD DROP &&
 
 # Allow unlimited traffic on loopback
 sudo iptables --append INPUT -i lo -j ACCEPT &&

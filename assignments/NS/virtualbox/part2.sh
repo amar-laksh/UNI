@@ -18,7 +18,7 @@
 #===============================================================================
 
 set -o nounset                                  # Treat unset variables as an error
-MY_IP="192.168.101.2/24"
+MY_IP="192.168.101.2"
 
 # Flushing all existing chains
 sudo iptables -F INPUT &&
