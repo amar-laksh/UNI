@@ -42,5 +42,5 @@ sudo iptables --append INPUT -i lo -j ACCEPT &&
 sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Deny all traffic except known addresses
-sudo iptables -A INPUT --protocol all ! --src $SERVERNET --jump DROP &&
-sudo iptables -A INPUT --protocol all ! --src $CLIENTNET --jump DROP
+sudo iptables -A PREROUTING --protocol all ! --src $SERVERNET --jump DROP &&
+sudo iptables -A PREROUTING --protocol all ! --src $CLIENTNET --jump DROP
