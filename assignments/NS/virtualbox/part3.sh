@@ -37,4 +37,4 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 # Setting specific rules according to the part
 sudo iptables --append INPUT --protocol tcp --dst $MY_IP --dport 22 -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT &&
 sudo iptables --append INPUT --jump DROP &&
-sudo iptables --append OUTPUT -m conntrack --ctstate NEW,ESTABLISHED, RELATED --jump ACCEPT
+sudo iptables --append OUTPUT -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT
