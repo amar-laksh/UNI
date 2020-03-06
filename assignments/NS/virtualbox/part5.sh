@@ -45,6 +45,6 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 #sudo iptables -A FORWARD -m conntrack --src $SERVERNET --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT &&
 #sudo iptables -A INPUT -m conntrack --src $SERVERNET --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT &&
 #sudo iptables -A INPUT -m conntrack --src $CLIENTNET --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT &&
-sudo iptables -t nat -A PREROUTING -p all  ! --src $SERVERNET --jump logdrop &&
-sudo iptables -t nat -A PREROUTING -p all  ! --src $CLIENTNET --jump logdrop
+sudo iptables -A FORWARD -p all  ! --src $SERVERNET --jump logdrop &&
+sudo iptables -A FORWARD -p all  ! --src $CLIENTNET --jump logdrop
 
