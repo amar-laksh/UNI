@@ -26,9 +26,9 @@ sudo iptables -F FORWARD &&
 sudo iptables -F OUTPUT &&
 
 # Setting default permit rules
-sudo iptables -P INPUT DROP &&
+sudo iptables -P INPUT ACCEPT &&
 sudo iptables -P OUTPUT ACCEPT &&
-sudo iptables -P FORWARD DROP &&
+sudo iptables -P FORWARD ACCEPT &&
 
 # Allow unlimited traffic on loopback
 sudo iptables --append INPUT -i lo -j ACCEPT &&
@@ -36,4 +36,5 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
 sudo iptables --append INPUT --protocol tcp --dst $MY_IP --dport 22 -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT &&
-sudo iptables --append OUTPUT --jump ACCEPT
+sudo iptables --append INPUT --jump DROP &&
+sudo iptables --append OUTPUT -m conntrack --ctstate NEW,ESTABLISHED, RELATED --jump ACCEPT
