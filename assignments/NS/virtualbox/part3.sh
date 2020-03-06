@@ -26,7 +26,7 @@ sudo iptables -F FORWARD &&
 sudo iptables -F OUTPUT &&
 
 # Setting default permit rules
-sudo iptables -P INPUT ACCEPT &&
+sudo iptables -P INPUT DROP &&
 sudo iptables -P OUTPUT ACCEPT &&
 sudo iptables -P FORWARD ACCEPT &&
 
@@ -35,6 +35,6 @@ sudo iptables --append INPUT -i lo -j ACCEPT &&
 sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
-sudo iptables --append INPUT --protocol tcp --dst $MY_IP --dport 22 -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT &&
-sudo iptables --append INPUT --jump DROP &&
-sudo iptables --append OUTPUT -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT
+#sudo iptables --append input --protocol tcp --dst $my_ip --dport 22 -m conntrack --ctstate new,established,related --jump accept &&
+#sudo iptables --append input --jump drop &&
+#sudo iptables --append output -m conntrack --ctstate new,established,related --jump accept
