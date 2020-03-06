@@ -23,6 +23,8 @@ set -o nounset                                  # Treat unset variables as an er
 sudo iptables -F INPUT &&
 sudo iptables -F FORWARD &&
 sudo iptables -F OUTPUT &&
+sudo iptables -F logdrop &&
+sudo iptables -X logdrop &&
 
 # Setting default permit rules
 sudo iptables -P INPUT ACCEPT &&
