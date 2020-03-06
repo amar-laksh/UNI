@@ -19,6 +19,7 @@
 
 set -o nounset                                  # Treat unset variables as an error
 MY_IP="192.168.101.2"
+#nic="enp0s3"
 
 # Flushing all existing chains
 sudo iptables -F INPUT &&
@@ -35,6 +36,7 @@ sudo iptables --append INPUT -i lo -j ACCEPT &&
 sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
-#sudo iptables --append input --protocol tcp --dst $my_ip --dport 22 -m conntrack --ctstate new,established,related --jump accept &&
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT
+#sudo iptables --append input --protocol tcp --dst $my_ip --dport 22 -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump accept &&
 #sudo iptables --append input --jump drop &&
 #sudo iptables --append output -m conntrack --ctstate new,established,related --jump accept
