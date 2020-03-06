@@ -37,6 +37,7 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
 sudo iptables -A FORWARD -m conntrack --src $SERVERNET --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT &&
+sudo iptables -A FORWARD -m conntrack --dst $SERVERNET --ctstate ESTABLISHED,RELATED,RELATED -j ACCEPT &&
 sudo iptables --append FORWARD --protocol tcp --dst $SERVERNET --dport 22 -m conntrack --ctstate NEW,ESTABLISHED,RELATED --jump ACCEPT &&
 sudo iptables --append FORWARD --protocol all --src $SERVERNET --jump ACCEPT &&
 sudo iptables --append FORWARD --protocol all --dst $SERVERNET --jump DROP
