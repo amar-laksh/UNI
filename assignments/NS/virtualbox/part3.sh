@@ -36,7 +36,6 @@ sudo iptables --append OUTPUT -o lo -j ACCEPT &&
 
 # Setting specific rules according to the part
 sudo iptables --append INPUT --protocol tcp --dst $MY_IP --dport 22 -m state --state NEW,ESTABLISHED --jump ACCEPT &&
-sudo iptables --append INPUT --protocol udp --dst $MY_IP --dport 22 -m state --state NEW,ESTABLISHED --jump ACCEPT &&
 #sudo iptables --append OUTPUT --protocol tcp --src $MY_IP --sport 22 -m state --state NEW,ESTABLISHED --jump ACCEPT &&
 #sudo iptables --append OUTPUT --protocol udp --src $MY_IP --sport 22 -m state --state NEW,ESTABLISHED --jump ACCEPT &&
 sudo iptables --append OUTPUT --jump ACCEPT
