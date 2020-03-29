@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+byte value \PYG{k}{for} trace \PYG{l+m}{0}: D8
+byte value \PYG{k}{for} trace \PYG{l+m}{1}: E8
+byte value \PYG{k}{for} trace \PYG{l+m}{2}: \PYG{l+m}{42}
+byte value \PYG{k}{for} trace \PYG{l+m}{3}: 3D
+byte value \PYG{k}{for} trace \PYG{l+m}{4}: \PYG{l+m}{96}
+byte value \PYG{k}{for} trace \PYG{l+m}{5}: E5
+byte value \PYG{k}{for} trace \PYG{l+m}{6}: CB
+byte value \PYG{k}{for} trace \PYG{l+m}{7}: 0B
+byte value \PYG{k}{for} trace \PYG{l+m}{8}: 1F
+byte value \PYG{k}{for} trace \PYG{l+m}{9}: \PYG{l+m}{33}
+\end{Verbatim}

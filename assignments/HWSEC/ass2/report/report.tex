@@ -34,6 +34,7 @@
 \hypersetup{urlcolor=DarkBlue}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{minted}
 
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
@@ -120,8 +121,33 @@ The image of the RSA operations can be seen in Fig~\ref{fig:acquired_trace}
 \section{Task3}
 \label{Task3}
 
+\subsection{Overlapping Traces}%
+\label{sub:overlapping_traces}
 
-\bf{TODO}
+The plot of the first 10 traces can be seen in Fig ~\ref{fig:traces_plot}.
+\par
+The corresponding output can be seen below:
+\begin{minted}{bash}
+byte value for trace 0: D8
+byte value for trace 1: E8
+byte value for trace 2: 42
+byte value for trace 3: 3D
+byte value for trace 4: 96
+byte value for trace 5: E5
+byte value for trace 6: CB
+byte value for trace 7: 0B
+byte value for trace 8: 1F
+byte value for trace 9: 33
+\end{minted}{bash}
+
+\subsubsection{AES XOR}%
+\label{ssub:aes_xor}
+The following function implements the required functionality (a complete program can be found in the aforementioned source code repository):
+
+\begin{minted}{python}
+def AES_XOR(x, k_prime):
+    return SBOX[x ^ k_prime]
+\end{minted}{python}
 
 \section{Task4}
 \label{Task4}
@@ -187,7 +213,6 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 \label{sub:counter_measures}
 \bf{TODO}
 
-I am citing this now \cite{commons_stages_2015}.
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
@@ -198,9 +223,9 @@ I am citing this now \cite{commons_stages_2015}.
 %% If you have bibdatabase file and want bibtex to generate the
 %% bibitems, please use
 %%
-\bibliographystyle{elsarticle-num}
-\bibliography{bibliography}
-
+% \bibliographystyle{elsarticle-num}
+% \bibliography{bibliography}
+%
 
 \begin{figure}[hb]
 	\centering
@@ -214,12 +239,16 @@ I am citing this now \cite{commons_stages_2015}.
     \caption{Graph of the acquire trace in full scale}\label{fig:acquired_trace}
 \end{figure}
 
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[width=10cm]{traces_plot}}
+    \caption{Graph of superimposed 10 traces}\label{fig:traces_plot}
+\end{figure}
 %% else use the following coding to input the bibitems directly in the
 %% TeX file.
 
 % \begin{thebibliography}{00}
 %
-% \bibitem{pizzaOrigins1991} Perry, C. {\em A Stone-Age Snack : History: Pizza topped with tomatoes, pepperoni and cheese is only 100 years old}. Los Angeles Times,1991
 % %% Text of bibliographic item%
 % \end{thebibliography}
 \end{document}

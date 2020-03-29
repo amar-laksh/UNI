@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{AES\PYGZus{}XOR}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{k\PYGZus{}prime}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{SBOX}\PYG{p}{[}\PYG{n}{x} \PYG{o}{\PYGZca{}} \PYG{n}{k\PYGZus{}prime}\PYG{p}{]}
+\end{Verbatim}
