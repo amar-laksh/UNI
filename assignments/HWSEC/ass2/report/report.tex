@@ -100,7 +100,9 @@
 %% main text
 \section{Task1}
 \label{Task1}
-\bf{TODO}
+The average number of cycles per execution of the exponentiation
+for $\textit{e}=17$ is:
+
 \section{Task2}
 \label{Task2}
 \subsection{Oscilloscope Capture}%
@@ -109,14 +111,16 @@ The image of the RSA operations can be seen in Fig~\ref{fig:oscilloscope}
 
 \subsection{Manual Extraction}%
 \label{sub:manual_extraction}
+\textbf{TODO}
 
 \subsection{Acquired Trace}%
 \label{sub:acquired_trace}
+The graph of the acquired trace can be found in Fig~\ref{fig:acquired_trace} and
+\textbf{python} program file \textit{load\_trace} contains the program.
 
 \subsection{SPA}%
 \label{sub:spa}
-
-The image of the RSA operations can be seen in Fig~\ref{fig:acquired_trace}
+\textbf{TODO}
 
 \section{Task3}
 \label{Task3}
@@ -140,14 +144,35 @@ byte value for trace 8: 1F
 byte value for trace 9: 33
 \end{minted}{bash}
 
-\subsubsection{AES XOR}%
+\subsection{AES XOR}%
 \label{ssub:aes_xor}
-The following function implements the required functionality (a complete program can be found in the aforementioned source code repository):
+The following function implements the required functionality (the complete program can be found in the aforementioned source code repository and submitted zip):
 
 \begin{minted}{python}
 def AES_XOR(x, k_prime):
     return SBOX[x ^ k_prime]
 \end{minted}{python}
+
+\subsection{Significant Bit}%
+\label{sub:significant_bit}
+The method to extract the \textit{MSB} involves two steps where we first convert an \textit{integer}
+to a \textit{bit-field} and then we get the first element of the \textit{bit-field}.
+The following is an implementation of the function in \textbf{python}:
+\begin{minted}{python}
+def int_to_bits(n):
+    return [n >> i & 1 for i in range(BIT_SIZE-1,-1,-1)]
+
+def MSB(n):
+    return int_to_bits(n)[0]
+\end{minted}{python}
+
+\subsection{DPA}%
+\label{sub:dpa}
+The submitted program file \textit{dpa.py} contains the program to produce the overlapping graphs
+of all difference-of-means curves as seen in Fig ~\ref{fig:peaks_plot} and the zoomed-in part
+showing the candidate key $K10=7$ as seen in Fig ~\ref{fig:peak_plot}.
+
+
 
 \section{Task4}
 \label{Task4}
@@ -226,6 +251,10 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 % \bibliographystyle{elsarticle-num}
 % \bibliography{bibliography}
 %
+\newpage
+\section{Appendices}%
+\label{sec:appendices}
+
 
 \begin{figure}[hb]
 	\centering
@@ -243,6 +272,18 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 	\centering
     \centerline{\includegraphics[width=10cm]{traces_plot}}
     \caption{Graph of superimposed 10 traces}\label{fig:traces_plot}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[width=10cm]{peaks_plot}}
+    \caption{Graph of superimposed difference-of-means}\label{fig:peaks_plot}
+\end{figure}
+
+\begin{figure}[hb]
+	\centering
+    \centerline{\includegraphics[width=10cm]{peak_plot}}
+    \caption{Graph of zoomed-in part of difference-of-means}\label{fig:peak_plot}
 \end{figure}
 %% else use the following coding to input the bibitems directly in the
 %% TeX file.
