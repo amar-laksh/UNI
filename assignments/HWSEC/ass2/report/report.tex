@@ -263,6 +263,47 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 \subsection{Counter Measures}%
 \label{sub:counter_measures}
 
+\subsubsection{Difference between Detection based and Algorithmic}%
+\label{sub:difference_between_detection_based_and_algorithmic}
+\begin{itemize}
+	\item Detection-based countermeasures are based in detecting faults through hardware or software properties
+		of faults while Algorithmic take help of specific algorithmic patterns and monitor changes in those
+		patterns caused by faults.
+	\item Since Algorithmic countermeasures can use techniques like time randomization, they are much harder
+		to inject faults against.
+\end{itemize}
+
+\subsubsection{RSA-CRT Countermeasures}%
+\label{sub:rsa_crt_countermeasures}
+\textbf{TODO}
+
+\subsubsection{SPA Prevention}%
+\label{sub:spa_prevention}
+There a number of countermeasures that can be taken to prevent the SPA attack:
+\begin{itemize}
+	\item The Square and Always Multiply Algorithm can be used to conditionally throw away the result
+		so that there's less contrast in the acquired power trace.
+	\item Noise Addition or Signal Reduction can be implemented on the signal to reduce the SNR
+	\item Balancing power consumption requires a lot of changes in hardware that create redundant circuits
+		and is therefore not a preferred countermeasure.
+\end{itemize}
+
+\subsubsection{Time Randomization}%
+\label{ssub:time_randomization}
+\begin{itemize}
+	\item In Both Fault Injections models namely \textit{Flip-Bit} and \textit{Stuck-at},
+		the faults are injected in order to alter the normal control flow of a program
+		and since the instructions in a control flow are dependent on time, Time Randomization
+		makes these injections to work.
+	\item In Side-Channel attacks focus on recovering secrets through analysis of the Runtime.
+		Since the Runtime of a program is based on time, Time randomization makes these attacks
+		also harder to work.
+\end{itemize}
+
+\subsubsection{DPA Effects}%
+\label{ssub:dpa_effects}
+\textbf{TODO}
+
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
