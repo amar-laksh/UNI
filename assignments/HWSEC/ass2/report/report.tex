@@ -275,7 +275,18 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 
 \subsubsection{RSA-CRT Countermeasures}%
 \label{sub:rsa_crt_countermeasures}
-\textbf{TODO}
+\begin{itemize}
+	\item Detection-based countermeasures
+		\begin{itemize}
+			\item \textbf{TODO}
+		\end{itemize}
+	\item Algorithmic countermeasures
+		\begin{itemize}
+			\item A simple countermeasure could be to do verification of the signature before and after
+				RSA-CRT using Hashes.
+			\item \textbf{TODO}
+		\end{itemize}
+\end{itemize}
 
 \subsubsection{SPA Prevention}%
 \label{sub:spa_prevention}
@@ -302,7 +313,14 @@ There a number of countermeasures that can be taken to prevent the SPA attack:
 
 \subsubsection{DPA Effects}%
 \label{ssub:dpa_effects}
-\textbf{TODO}
+\begin{itemize}
+	\item Increasing the amplitude noise decreases the SNR and therefore each power trace
+		will have lesser amount of signal and a greater number of traces will be required.
+	\item If the attacker can acquire infinitely many traces then increasing noise below a certain
+		point (after which the signal is no longer traceable)
+		will not be a suitable countermeasure. However under a finite number of traces,
+		this technique can function as an effective countermeasure.
+\end{itemize}
 
 
 %% The Appendices part is started with the command \appendix;
