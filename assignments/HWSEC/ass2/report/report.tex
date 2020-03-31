@@ -107,11 +107,37 @@ for $\textit{e}=17$ is:
 \label{Task2}
 \subsection{Oscilloscope Capture}%
 \label{sub:oscilloscope_capture}
-The image of the RSA operations can be seen in Fig~\ref{fig:oscilloscope}
+The image of the RSA operations can be seen below:
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=7cm]{oscilloscope}}
+    \caption{The picture of oscilloscope showing the first 6 operations of RSA}\label{fig:oscilloscope}
+\end{figure}
 
 \subsection{Manual Extraction}%
 \label{sub:manual_extraction}
-\textbf{TODO}
+
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=10cm]{manual_extraction}}
+    \caption{Superimposed picture showing operations as seen in the trace}\label{fig:manual_extraction}
+\end{figure}
+\begin{itemize}
+
+\item Based on the square-and-multiply (SaM) algorithm, the for-loop contains a square (S) operation that takes place in every iteration and a multiply (M) operation that is done only when the current exponent bit is 1.
+
+\item The initial bit of the exponent is always 1 and the loop starts from the 2nd bit onwards (Left to right). 
+
+\item The screenshot above from an oscilloscope shows variation in power consumption as the algorithm runs.
+
+\item The thinner lines plotted indicate a square operation and the thicker lines indicate squaring followed with multiplication.
+
+\item The sequence of operations from the graph are S, S, S, SM, SM, SM that translates to the bits being 0,0,0, 1, 1, 1.
+
+\item Therefore, the upper six bits of the exponent e are 100011.
+
+\end{itemize}
+
 
 \subsection{Acquired Trace}%
 \label{sub:acquired_trace}
@@ -236,7 +262,7 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 
 \subsection{Counter Measures}%
 \label{sub:counter_measures}
-\bf{TODO}
+
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
@@ -255,12 +281,6 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 \section{Appendices}%
 \label{sec:appendices}
 
-
-\begin{figure}[hb]
-	\centering
-    \centerline{\includegraphics[width=8cm]{oscilloscope}}
-    \caption{The picture of oscilloscope showing the first 6 operations of RSA}\label{fig:oscilloscope}
-\end{figure}
 
 \begin{figure}[hb]
 	\centering
