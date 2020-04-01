@@ -101,8 +101,23 @@
 \section{Task1}
 % \label{Task1}
 The average number of cycles per execution of the exponentiation for e = 17 is:
-$9,224,516$ cycles.
-\textbf{TODO}
+\textbf{9,224,516} cycles.
+\\
+First, we change the exponent bit form 17 to 12 (1100) so that we have a 50\%
+distribution of 1s and 0s as required by the problem and the recorded value
+through the program is: \textbf{7,365,416} cycles.\\
+
+Let $C_{4}$ be the cycles for a 4-bit exponent exponentiation with 50\% distribution of 1s and 0s.\\
+Let $C_{1024}$ be the cycles for a 1024-bit exponent exponentiation with 50\% distribution of 1s and 0s.\\
+\begin{align}
+	C_4 &= 7365416 \\
+	C_{1024} &=  C_4 * 256 (1024 = 4 * 256) \\
+	C_{1024} &= 7365416 * 256 \\
+	C_{1024} &= 1885546496
+\end{align}
+
+Therefore, the extrapolated cycles for a 1024-bit exponent exponentiation where 50\% of bits are 1 is:
+\textbf{1,885,546,496} cycles.
 \section{Task2}
 % \label{Task2}
 
@@ -142,8 +157,15 @@ The image of the RSA operations can be seen below:
 
 \subsection{Acquired Trace}%
 \label{sub:acquired_trace}
-The graph of the acquired trace can be found in Fig~\ref{fig:acquired_trace} and
-\textbf{python} program file \textit{task2.3.py} contains the program.
+
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=10cm]{trace_plot}}
+    \caption{Graph of the acquire trace in full scale}\label{fig:acquired_trace}
+\end{figure}
+
+The graph of the acquired trace can be found above and
+the program file \textit{task2.3.py} contains the program.
 
 \subsection{SPA}%
 \label{sub:spa}
@@ -165,9 +187,16 @@ Analyzing waveform... ... ...
 \subsection{Overlapping Traces}%
 \label{sub:overlapping_traces}
 
-The plot of the first 10 traces can be seen in Fig~\ref{fig:traces_plot}.
+
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=10cm]{traces_plot}}
+    \caption{Graph of superimposed 10 traces}\label{fig:traces_plot}
+\end{figure}
+
+The plot of the first 10 traces can be seen above.
 \par
-The program file task3.py contains the program for the task.
+The program file \textit{task3.py} contains the program for the task.
 The corresponding output can be seen below:
 \begin{minted}{bash}
 byte value for trace 0: D8
@@ -195,7 +224,7 @@ def AES_XOR(x, k_prime):
 \label{sub:significant_bit}
 The method to extract the \textit{MSB} involves two steps where we first convert an \textit{integer}
 to a \textit{bit-field} and then we get the first element of the \textit{bit-field}.
-The following is an implementation of the function in \textbf{python}:
+The following is an implementation of the function in \textit{python}:
 \begin{minted}{python}
 def int_to_bits(n):
     return [n >> i & 1 for i in range(BIT_SIZE-1,-1,-1)]
@@ -206,11 +235,22 @@ def MSB(n):
 
 \subsection{DPA}%
 \label{sub:dpa}
+
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=10cm]{peaks_plot}}
+    \caption{Graph of superimposed difference-of-means}\label{fig:peaks_plot}
+\end{figure}
+
 The submitted program file \textit{task3.4.py} contains the program to produce the overlapping graphs
-of all difference-of-means curves as seen in Fig~\ref{fig:peaks_plot} and the zoomed-in part
-showing the candidate key $K10=7$ as seen in Fig~\ref{fig:peak_plot}.
+of all difference-of-means curves as seen above and the zoomed-in part
+showing the candidate key $K10=7$ can be seen below.
 
-
+\begin{figure}[H]
+	\centering
+    \centerline{\includegraphics[width=10cm]{peak_plot}}
+    \caption{Graph of zoomed-in part of difference-of-means}\label{fig:peak_plot}
+\end{figure}
 
 \section{Task4}
 % \label{sub:task4}
@@ -349,34 +389,7 @@ There a number of countermeasures that can be taken to prevent the SPA attack:
 % \bibliographystyle{elsarticle-num}
 % \bibliography{bibliography}
 %
-\newpage
-\section{Appendices}%
-\label{sec:appendices}
 
-
-\begin{figure}[hb]
-	\centering
-    \centerline{\includegraphics[width=10cm]{trace_plot}}
-    \caption{Graph of the acquire trace in full scale}\label{fig:acquired_trace}
-\end{figure}
-
-\begin{figure}[hb]
-	\centering
-    \centerline{\includegraphics[width=10cm]{traces_plot}}
-    \caption{Graph of superimposed 10 traces}\label{fig:traces_plot}
-\end{figure}
-
-\begin{figure}[hb]
-	\centering
-    \centerline{\includegraphics[width=10cm]{peaks_plot}}
-    \caption{Graph of superimposed difference-of-means}\label{fig:peaks_plot}
-\end{figure}
-
-\begin{figure}[hb]
-	\centering
-    \centerline{\includegraphics[width=10cm]{peak_plot}}
-    \caption{Graph of zoomed-in part of difference-of-means}\label{fig:peak_plot}
-\end{figure}
 %% else use the following coding to input the bibitems directly in the
 %% TeX file.
 
