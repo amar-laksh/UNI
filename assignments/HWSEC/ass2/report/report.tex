@@ -331,13 +331,11 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 \begin{itemize}
 	\item Detection-based countermeasures
 		\begin{itemize}
-			\item \textbf{TODO}
+			\item A hardware-level approach could be to monitor power supply voltage and ensure it does not drop below a specified limit. If it does, the RSA computation can be halted. This is expensive since it requires monitoring of voltage at an extremely small time frame i.e. at nanosecond scale.
 		\end{itemize}
 	\item Algorithmic countermeasures
 		\begin{itemize}
-			\item A simple countermeasure could be to do verification of the signature before and after
-				RSA-CRT using Hashes.
-			\item \textbf{TODO}
+			\item As a countermeasure, the correctness of the signature can be verified by comparison of inverse result with the input. If the values turn out to be equal, no FI attack was performed.
 		\end{itemize}
 \end{itemize}
 
