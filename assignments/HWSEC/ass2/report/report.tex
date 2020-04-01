@@ -1,8 +1,8 @@
 \documentclass[1p,16pt]{elsarticle}
 \makeatletter
 \def\ps@pprintTitle{%
- \let\@oddhead\@empty
- \let\@evenhead\@empty
+\let\@oddhead\@empty
+\let\@evenhead\@empty
  \def\@oddfoot{}%
  \let\@evenfoot\@oddfoot}
 \makeatother
@@ -27,7 +27,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\graphicspath{ {./figures/} }
+\graphicspath{{./figures/}}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{citecolor=DeepPink4}
 \hypersetup{linkcolor=DarkRed}
@@ -99,13 +99,15 @@
 
 %% main text
 \section{Task1}
-\label{Task1}
+% \label{Task1}
+
 The average number of cycles per execution of the exponentiation
 for $\textit{e}=17$ is: \\
 $9224544$ cycles.
 \textbf{TODO}
 \section{Task2}
-\label{Task2}
+% \label{Task2}
+
 \subsection{Oscilloscope Capture}%
 \label{sub:oscilloscope_capture}
 The image of the RSA operations can be seen below:
@@ -127,7 +129,7 @@ The image of the RSA operations can be seen below:
 
 \item Based on the square-and-multiply (SaM) algorithm, the for-loop contains a square (S) operation that takes place in every iteration and a multiply (M) operation that is done only when the current exponent bit is 1.
 
-\item The initial bit of the exponent is always 1 and the loop starts from the 2nd bit onwards (Left to right). 
+\item The initial bit of the exponent is always 1 and the loop starts from the 2nd bit onwards (Left to right).
 
 \item The screenshot above from an oscilloscope shows variation in power consumption as the algorithm runs.
 
@@ -150,12 +152,12 @@ The graph of the acquired trace can be found in Fig~\ref{fig:acquired_trace} and
 \textbf{TODO}
 
 \section{Task3}
-\label{Task3}
+% \label{Task3}
 
 \subsection{Overlapping Traces}%
 \label{sub:overlapping_traces}
 
-The plot of the first 10 traces can be seen in Fig ~\ref{fig:traces_plot}.
+The plot of the first 10 traces can be seen in Fig~\ref{fig:traces_plot}.
 \par
 The corresponding output can be seen below:
 \begin{minted}{bash}
@@ -169,7 +171,7 @@ byte value for trace 6: CB
 byte value for trace 7: 0B
 byte value for trace 8: 1F
 byte value for trace 9: 33
-\end{minted}{bash}
+\end{minted}
 
 \subsection{AES XOR}%
 \label{ssub:aes_xor}
@@ -178,7 +180,7 @@ The following function implements the required functionality (the complete progr
 \begin{minted}{python}
 def AES_XOR(x, k_prime):
     return SBOX[x ^ k_prime]
-\end{minted}{python}
+\end{minted}
 
 \subsection{Significant Bit}%
 \label{sub:significant_bit}
@@ -191,18 +193,19 @@ def int_to_bits(n):
 
 def MSB(n):
     return int_to_bits(n)[0]
-\end{minted}{python}
+\end{minted}
 
 \subsection{DPA}%
 \label{sub:dpa}
 The submitted program file \textit{dpa.py} contains the program to produce the overlapping graphs
-of all difference-of-means curves as seen in Fig ~\ref{fig:peaks_plot} and the zoomed-in part
-showing the candidate key $K10=7$ as seen in Fig ~\ref{fig:peak_plot}.
+of all difference-of-means curves as seen in Fig~\ref{fig:peaks_plot} and the zoomed-in part
+showing the candidate key $K10=7$ as seen in Fig~\ref{fig:peak_plot}.
 
 
 
 \section{Task4}
-\label{Task4}
+% \label{sub:task4}
+
 \subsection{Fault Injection on RSA-CRT}%
 \label{sub:fault_injection_on_rsa_crt}
 From the given values
@@ -218,9 +221,9 @@ we calculate the valid signature $y$ by:
 \label{sub:ballcore_method}
 The bellcore method gives factor $q$ by:
 \begin{align}
-	q &= gcd(S - \overline{S}, n) \\
-	q &= gcd(48 - 35, 91) \\
-	q &= gcd(13, 91) \\
+	q &= \gcd(S - \overline{S}, n) \\
+	q &= \gcd(48 - 35, 91) \\
+	q &= \gcd(13, 91) \\
 	q &= 13
 \end{align}
 
@@ -236,16 +239,16 @@ we know $n = p * q$ therefore factor $p$ is:
 \label{sub:lenstra_method}
 The Lenstra method gives factor $q$ by:
 \begin{align}
-	q &= gcd(\overline{Y}^e - x, n) \\
+	q &= \gcd(\overline{y}^e - x, n) \\
 \end{align}
 
 From eq 1, we know that $y=48$ and since
 $\overline{y} = y, \overline{y} = 48$, therefore
 
 \begin{align}
-	q &= gcd(48^5 - 55, 91) \\
-	q &= gcd(48 - 55, 91) \\
-	q &= gcd(7, 91) \\
+	q &= \gcd(48^5 - 55, 91) \\
+	q &= \gcd(48 - 55, 91) \\
+	q &= \gcd(7, 91) \\
 	q &= 7
 \end{align}
 

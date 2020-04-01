@@ -1,0 +1,5 @@
+def int_to_bits(n):
+    return [n >> i & 1 for i in range(BIT_SIZE-1,-1,-1)]
+
+def MSB(n):
+    return int_to_bits(n)[0]
