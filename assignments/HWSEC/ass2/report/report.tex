@@ -108,8 +108,8 @@ Number of cycles (C) consumed by exponentiation with a 1024-bit exponent assumin
 	\item A square (S) operation would be performed for every bit that is being processed and an additional multiply operation (SM) for bits that are 1.
 	\item Hence, at every iteration of the exponent bit, an S or SM operation takes place.
 	\item We observed the number of cycles needed for one S and one SM operation. $C_S = 1840048$ and $C_{SM} = 3680264$
-		were obtained by setting $e = 0x2$  i.e. $10_2$ and $e = 0x3$  i.e. $11_2$ respectively.
-		$C_{MSB} = 4984$ (found by setting $e = 0x1$) was subtracted from both $C_S$ and $C_{SM}$ because
+		were obtained by setting e = 0x2  i.e. $10_2$ and e = 0x3  i.e. $11_2$ respectively.
+		$C_{MSB} = 4984$ (found by setting e = 0x1) was subtracted from both $C_S$ and $C_{SM}$ because
 		the MSB is processed only once and shall be added to the cycle count calculation explicitly.
 	\item For estimating $C_{1024}$ with a 1024-bit e, since the most significant bit is 1, the rest of the bits
 		must be 01010101 and so on to achieve a probability of 50\% on bit values.
@@ -150,7 +150,7 @@ The image of the RSA operations can be seen below:
 
 \item Based on the square-and-multiply (SaM) algorithm, the for-loop contains a square (S) operation that takes place in every iteration and a multiply (M) operation that is done only when the current exponent bit is 1.
 
-\item The initial bit of the exponent is always 1 and the loop starts from the 2nd bit onwards (Left to right).
+\item The initial bit of the exponent is always 1 and the loop starts from the $2^{nd}$ bit onwards (Left to right).
 
 \item The screenshot above from an oscilloscope shows variation in power consumption as the algorithm runs.
 
@@ -158,7 +158,7 @@ The image of the RSA operations can be seen below:
 
 \item The sequence of operations from the graph are S, S, S, SM, SM, SM that translates to the bits being 0, 0, 0, 1, 1, 1.
 
-\item Therefore, the upper six bits of the exponent e are 100011.
+\item Therefore, the upper six bits of the exponent e are \textbf{100011}.
 
 \end{itemize}
 
@@ -364,8 +364,8 @@ There a number of countermeasures that can be taken to prevent the SPA attack:
 	\item In Both Fault Injections models namely \textit{Flip-Bit} and \textit{Stuck-at},
 		the faults are injected in order to alter the normal control flow of a program
 		and since the instructions in a control flow are dependent on time, Time Randomization
-		makes these injections to work.
-	\item In Side-Channel attacks focus on recovering secrets through analysis of the Runtime.
+		makes these injections harder to work.
+	\item Side-Channel attacks focus on recovering secrets through analysis of the Runtime.
 		Since the Runtime of a program is based on time, Time randomization makes these attacks
 		also harder to work.
 \end{itemize}
