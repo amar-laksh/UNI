@@ -328,8 +328,9 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 \label{sub:difference_between_detection_based_and_algorithmic}
 \begin{itemize}
 	\item Detection-based countermeasures are based in detecting faults through hardware or software properties
-		of faults while Algorithmic take help of specific algorithmic patterns and monitor changes in those
-		patterns caused by faults.
+		of devices (like general control flow of the device)
+	\item In contrast, Algorithmic countermeasures take help of specific algorithmic patterns (e.g. RSA, AES)
+		and monitor changes in those patterns caused by faults in the analysed specific program.
 	\item Since Algorithmic countermeasures can use techniques like time randomization, they are much harder
 		to inject faults against.
 \end{itemize}
@@ -349,7 +350,7 @@ The major advantage of Lenstra method is that only the faulty value $\overline{S
 
 \subsubsection{SPA Prevention}%
 \label{sub:spa_prevention}
-There a number of countermeasures that can be taken to prevent the SPA attack:
+There are a number of countermeasures that can be taken to prevent the SPA attack:
 \begin{itemize}
 	\item The Square and Always Multiply Algorithm can be used to conditionally throw away the result
 		so that there's less contrast in the acquired power trace.
