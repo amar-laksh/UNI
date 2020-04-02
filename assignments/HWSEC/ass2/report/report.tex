@@ -103,21 +103,27 @@
 The average number of cycles per execution of the exponentiation for e = 17 is:
 \textbf{9,224,516} cycles.
 \\
-First, we change the exponent bit form 17 to 12 (1100) so that we have a 50\%
-distribution of 1s and 0s as required by the problem and the recorded value
-through the program is: \textbf{7,365,416} cycles.\\
-
-Let $C_{4}$ be the cycles for a 4-bit exponent exponentiation with 50\% distribution of 1s and 0s.\\
-Let $C_{1024}$ be the cycles for a 1024-bit exponent exponentiation with 50\% distribution of 1s and 0s.\\
-\begin{align}
-	C_4 &= 7365416 \\
-	C_{1024} &=  C_4 * 256 (1024 = 4 * 256) \\
-	C_{1024} &= 7365416 * 256 \\
-	C_{1024} &= 1885546496
-\end{align}
+Number of cycles (C) consumed by exponentiation with a 1024-bit exponent assuming 50\% of the bits to be 1 was estimated using the following method:
+\begin{itemize}
+	\item A square (S) operation would be performed for every bit that is being processed and an additional multiply operation (SM) for bits that are 1.
+	\item Hence, at every iteration of the exponent bit, an S or SM operation takes place.
+	\item We observed the number of cycles needed for one S and one SM operation. $C_S = 1840048$ and $C_{SM} = 3680264$
+		were obtained by setting $e = 0x2$  i.e. $10_2$ and $e = 0x3$  i.e. $11_2$ respectively.
+		$C_{MSB} = 4984$ (found by setting $e = 0x1$) was subtracted from both $C_S$ and $C_{SM}$ because
+		the MSB is processed only once and shall be added to the cycle count calculation explicitly.
+	\item For estimating $C_{1024}$ with a 1024-bit e, since the most significant bit is 1, the rest of the bits
+		must be 01010101 and so on to achieve a probability of 50\% on bit values.
+	\item Therefore, number of cycles is: \\
+		\begin{align}
+			C_{1024} &= C_{MSB} + C_{S2} + C_{SM3} + C_{S4} + C_{SM5} + \cdots + C_{S1024} \\
+			C_{1024} &= C_{MSB} + (512 * C_S) + (511 * C_{SM}) \\
+			C_{1024} &= 4984 + (512 * 1840048) + (511 * 3680264) \\
+			C_{1024} &= 2822724464
+		\end{align}
+\end{itemize}
 
 Therefore, the extrapolated cycles for a 1024-bit exponent exponentiation where 50\% of bits are 1 is:
-\textbf{1,885,546,496} cycles.
+\textbf{2,822,724,464} cycles.
 \\
 The solution for the task can be found in the \textit{crypto.c}.
 \section{Task2}
